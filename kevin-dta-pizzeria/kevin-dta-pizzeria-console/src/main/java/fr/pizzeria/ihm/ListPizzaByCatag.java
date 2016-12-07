@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -16,12 +17,13 @@ public class ListPizzaByCatag extends Option {
 
 	public ListPizzaByCatag(IhmUtil ihmUtil) {
 		// TODO Auto-generated constructor stub
-		this.setLibelle("5. Lister les pizzas groupées par catégorie");
+		this.setLibelle("5. Lister les pizzas groupï¿½es par catï¿½gorie");
 		this.ihmUtil = ihmUtil;
 	}
 
 	@Override
-	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException {
+	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
 		List<Pizza> pizzas = ihmUtil.getPizzaDao().findAllPizzas();
 		Map<CategoriePizza, List<Pizza>> map = pizzas.stream().collect(Collectors.groupingBy(Pizza::getCategPizza));

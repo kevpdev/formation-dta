@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
@@ -16,23 +17,24 @@ public class DeletePizza extends Option {
 	}
 
 	@Override
-	public void executeOption() throws IOException, InstantiationException, IllegalAccessException {
+	public void executeOption() throws IOException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		ListPizza listp = new ListPizza(ihmUtil);
 		listp.executeOption();
 
 		try {
 
-			System.out.print("Veuillez saisir le code de la pizza à  supprimer: ");
+			System.out.print("Veuillez saisir le code de la pizza ï¿½  supprimer: ");
 			String codeASupprimer = ihmUtil.getScanner().next();
 
 			Pizza pizzaASup = ihmUtil.getPizzaDao().getPizzaByCode(codeASupprimer);
 			if (codeASupprimer != null) {
 
-				System.out.println(ihmUtil.getPizzaDao().deletePizza(pizzaASup) ? "Suppression éffectué"
+				System.out.println(ihmUtil.getPizzaDao().deletePizza(pizzaASup) ? "Suppression ï¿½ffectuï¿½"
 						: "Echec de la suppression");
 
 			} else {
-				System.out.println("la pizza à supprimer n'existe pas !");
+				System.out.println("la pizza ï¿½ supprimer n'existe pas !");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

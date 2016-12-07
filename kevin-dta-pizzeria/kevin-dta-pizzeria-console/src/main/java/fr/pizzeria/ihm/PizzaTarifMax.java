@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
 import java.util.List;
 
@@ -14,12 +15,13 @@ public class PizzaTarifMax extends Option {
 
 	public PizzaTarifMax(IhmUtil ihmUtil) {
 		// TODO Auto-generated constructor stub
-		this.setLibelle("6. Afficher la pizza au tarif le plus élevé");
+		this.setLibelle("6. Afficher la pizza au tarif le plus ï¿½levï¿½");
 		this.ihmUtil = ihmUtil;
 	}
 
 	@Override
-	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException {
+	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
 		List<Pizza> pizzas = ihmUtil.getPizzaDao().findAllPizzas();
 		Pizza pizzaMax = pizzas.stream().max(Comparator.comparing(Pizza::getPrix)).get();

@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
@@ -64,7 +65,7 @@ public class Menu {
 
 	}
 
-	public void action() {
+	public void action() throws InvocationTargetException, NoSuchMethodException, SecurityException {
 
 		Integer action = 0;
 		boolean notInteger = true;
@@ -103,7 +104,7 @@ public class Menu {
 
 	}
 
-	public void start() {
+	public void start() throws InvocationTargetException, NoSuchMethodException, SecurityException {
 		display();
 		action();
 	}

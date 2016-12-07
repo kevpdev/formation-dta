@@ -2,6 +2,7 @@ package fr.pizzeria.dao;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import fr.pizzeria.excepetion.PizzaException;
@@ -9,7 +10,8 @@ import fr.pizzeria.model.Pizza;
 
 public interface PizzaDaoFactory {
 
-	List<Pizza> findAllPizzas() throws IOException, InstantiationException, IllegalAccessException;
+	List<Pizza> findAllPizzas() throws IOException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
 
 	boolean addPizza(Pizza pizza)
 			throws PizzaException, FileNotFoundException, IllegalArgumentException, IllegalAccessException, IOException;

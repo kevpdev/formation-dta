@@ -25,7 +25,8 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 	private Properties prop;
 
 	@Override
-	public List<Pizza> findAllPizzas() throws IOException, InstantiationException, IllegalAccessException {
+	public List<Pizza> findAllPizzas() throws IOException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		List<Pizza> pizzas = new ArrayList<Pizza>();
 		File f = new File(folderPath);
 		ArrayList<String> files = new ArrayList<String>(Arrays.asList(f.list()));
@@ -50,27 +51,21 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 					field.setAccessible(true);
 
 					Object valeur = null;
-					try {
-						if (field.getType().isEnum()) {
-							valeur = getProp().get(key).toString().toUpperCase();
-							// field.set(pizza, valeur);
-						} else {
-							valeur = getProp().get(key).toString();
-							// field.set(pizza, valeur);
-						}
 
-						valeur = field.getType()
-								.getDeclaredMethod("valueOf",
-										(field.getType().isAssignableFrom(String.class) ? Object.class : String.class))
-								.invoke(null, valeur);
-
-						field.set(pizza, valeur);
-
-					} catch (NoSuchMethodException | SecurityException | IllegalArgumentException
-							| InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					if (field.getType().isEnum()) {
+						valeur = getProp().get(key).toString().toUpperCase();
+						// field.set(pizza, valeur);
+					} else {
+						valeur = getProp().get(key).toString();
+						// field.set(pizza, valeur);
 					}
+
+					valeur = field.getType()
+							.getDeclaredMethod("valueOf",
+									(field.getType().isAssignableFrom(String.class) ? Object.class : String.class))
+							.invoke(null, valeur);
+
+					field.set(pizza, valeur);
 
 				}
 

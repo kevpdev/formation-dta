@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -10,8 +11,8 @@ import fr.pizzeria.tool.IhmUtil;
 
 public class Ecran {
 
-	public static void main(String[] args)
-			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		// TODO Auto-generated method stub
 
 		Pizza p1 = new Pizza();

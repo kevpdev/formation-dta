@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import fr.pizzeria.model.Pizza;
@@ -19,7 +20,8 @@ public class ListPizza extends Option {
 	}
 
 	@Override
-	public void executeOption() throws IOException, InstantiationException, IllegalAccessException {
+	public void executeOption() throws IOException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		ihmUtil.getPizzaDao().findAllPizzas();
 		List<Pizza> pizzas = ihmUtil.getPizzaDao().findAllPizzas();
 

@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,17 +17,18 @@ public class UpdatePizza extends Option {
 
 	public UpdatePizza(IhmUtil ihmUtil) {
 
-		this.setLibelle("3. Mise à jour d'une pizza");
+		this.setLibelle("3. Mise ï¿½ jour d'une pizza");
 		this.ihmUtil = ihmUtil;
 	}
 
 	@Override
-	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException {
+	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
 		ListPizza listp = new ListPizza(ihmUtil);
 		listp.executeOption();
 
-		System.out.print("Veuillez saisir le code de la pizza à modifier: ");
+		System.out.print("Veuillez saisir le code de la pizza ï¿½ modifier: ");
 		String codeAmodifier = ihmUtil.getScanner().next();
 
 		Pizza pizzaAModifier = ihmUtil.getPizzaDao().getPizzaByCode(codeAmodifier);
@@ -41,7 +43,7 @@ public class UpdatePizza extends Option {
 			System.out.print("Veuillez saisir le nouveau prix: ");
 			double prix = ihmUtil.getScanner().nextDouble();
 
-			System.out.println("Liste des catégories: ");
+			System.out.println("Liste des catï¿½gories: ");
 			List<CategoriePizza> listCateg = new ArrayList<>(Arrays.asList(CategoriePizza.values()));
 			for (int i = 0; i < listCateg.size(); i++) {
 
@@ -49,15 +51,15 @@ public class UpdatePizza extends Option {
 
 			}
 
-			System.out.print("Veuillez saisir le numéro de la catégorie: ");
+			System.out.print("Veuillez saisir le numï¿½ro de la catï¿½gorie: ");
 			int categ = ihmUtil.getScanner().nextInt();
 			System.out.println(categ);
 			Pizza pizza = new Pizza(pizzaAModifier.getId(), code, nom, prix, listCateg.get(categ - 1));
 			System.out.println(
-					ihmUtil.getPizzaDao().updatePizza(pizza) ? "Mise à jour éffectué !" : "Echec de la mise à jour!");
+					ihmUtil.getPizzaDao().updatePizza(pizza) ? "Mise ï¿½ jour ï¿½ffectuï¿½ !" : "Echec de la mise ï¿½ jour!");
 
 		} else {
-			System.out.println("Aucune pizza trouvée !");
+			System.out.println("Aucune pizza trouvï¿½e !");
 		}
 
 	}
