@@ -96,7 +96,7 @@ public class Pizza {
 
 	@Override
 	public String toString() {
-		return code + "-> " + nom + " (" + prix + "€) Categorie : " + categPizza;
+		return code + "-> " + nom + " (" + prix + "ï¿½) Categorie : " + categPizza;
 	}
 
 	public String toStringFile() {
