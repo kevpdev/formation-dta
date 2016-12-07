@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Logger;
 
-import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
@@ -25,22 +24,17 @@ public class DeletePizza extends Option {
 		ListPizza listp = new ListPizza(ihmUtil);
 		listp.executeOption();
 
-		try {
+		System.out.print("Veuillez saisir le code de la pizza �  supprimer: ");
+		String codeASupprimer = ihmUtil.getScanner().next();
 
-			System.out.print("Veuillez saisir le code de la pizza �  supprimer: ");
-			String codeASupprimer = ihmUtil.getScanner().next();
+		Pizza pizzaASup = ihmUtil.getPizzaDao().getPizzaByCode(codeASupprimer);
+		if (codeASupprimer != null) {
 
-			Pizza pizzaASup = ihmUtil.getPizzaDao().getPizzaByCode(codeASupprimer);
-			if (codeASupprimer != null) {
+			System.out.println(
+					ihmUtil.getPizzaDao().deletePizza(pizzaASup) ? "Suppression �ffectu�" : "Echec de la suppression");
 
-				System.out.println(ihmUtil.getPizzaDao().deletePizza(pizzaASup) ? "Suppression �ffectu�"
-						: "Echec de la suppression");
-
-			} else {
-				System.out.println("la pizza � supprimer n'existe pas !");
-			}
-		} catch (PizzaException e) {
-			LOGGER.info(e.getMessage());
+		} else {
+			System.out.println("la pizza � supprimer n'existe pas !");
 		}
 
 	}

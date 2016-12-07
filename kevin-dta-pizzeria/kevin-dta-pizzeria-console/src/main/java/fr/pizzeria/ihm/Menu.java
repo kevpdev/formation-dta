@@ -1,14 +1,11 @@
 package fr.pizzeria.ihm;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.tool.IhmUtil;
 
 public class Menu {
@@ -74,15 +71,10 @@ public class Menu {
 
 		do {
 
-			try {
-				System.out.print("Votre choix : ");
-				Scanner sc = new Scanner(System.in);
-				action = sc.nextInt();
-				notInteger = false;
-
-			} catch (InputMismatchException e) {
-				LOGGER.info(e.getMessage() + " !!!!!!!!!!! Seulement un nombre entier !!!!!!!!!");
-			}
+			System.out.print("Votre choix : ");
+			Scanner sc = new Scanner(System.in);
+			action = sc.nextInt();
+			notInteger = false;
 
 		} while (notInteger);
 
@@ -97,11 +89,8 @@ public class Menu {
 
 				this.options.get(4).executeOption();
 			}
-		} catch (PizzaException | IOException | IllegalArgumentException | IllegalAccessException
-				| InstantiationException e) {
-
+		} catch (Exception e) {
 			LOGGER.info(e.getMessage());
-
 		}
 
 	}
