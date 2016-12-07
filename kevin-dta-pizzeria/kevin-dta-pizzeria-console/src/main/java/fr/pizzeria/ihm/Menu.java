@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.tool.IhmUtil;
@@ -16,6 +17,7 @@ public class Menu {
 	public IhmUtil ihmUtil;
 	// public Option [] options = new Option[5];
 	public Map<Integer, Option> options = new HashMap<>();
+	private Logger LOGGER = Logger.getLogger(DeletePizza.class.getName());
 
 	public Menu() {
 		super();
@@ -79,7 +81,7 @@ public class Menu {
 				notInteger = false;
 
 			} catch (InputMismatchException e) {
-				System.out.println("!!!!!!!!!!! Seulement un nombre entier !!!!!!!!!");
+				LOGGER.info(e.getMessage() + " !!!!!!!!!!! Seulement un nombre entier !!!!!!!!!");
 			}
 
 		} while (notInteger);
@@ -98,7 +100,7 @@ public class Menu {
 		} catch (PizzaException | IOException | IllegalArgumentException | IllegalAccessException
 				| InstantiationException e) {
 
-			System.out.println(e.getMessage());
+			LOGGER.info(e.getMessage());
 
 		}
 

@@ -2,13 +2,16 @@ package fr.pizzeria.ihm;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Logger;
 
+import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
 public class DeletePizza extends Option {
 
 	public IhmUtil ihmUtil;
+	private Logger LOGGER = Logger.getLogger(DeletePizza.class.getName());
 
 	public DeletePizza(IhmUtil ihmUtil) {
 
@@ -36,8 +39,8 @@ public class DeletePizza extends Option {
 			} else {
 				System.out.println("la pizza � supprimer n'existe pas !");
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (PizzaException e) {
+			LOGGER.info(e.getMessage());
 		}
 
 	}
