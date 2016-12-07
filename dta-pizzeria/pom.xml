@@ -108,8 +108,8 @@
 		</dependency>
 	</dependencies>
 	<modules>
-		<module>kevin-dta-pizzeria-console</module>
-		<module>kevin-dta-pizzeria-dao</module>
-		<module>kevin-dta-pizzeria-model</module>
+		<module>dta-pizzeria-console</module>
+		<module>dta-pizzeria-dao</module>
+		<module>dta-pizzeria-model</module>
 	</modules>
 </project>
