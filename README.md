@@ -7,3 +7,5 @@
 
 
 # But de l'application
+
+<p>Application de gestion pour une pizzeria<p>
