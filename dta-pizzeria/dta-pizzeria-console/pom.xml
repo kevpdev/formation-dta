@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>dta-pizzeria</groupId>
-	<artifactId>dta-pizzeria-console</artifactId>
+	<groupId>dta.pizzeria</groupId>
+	<artifactId>kevin-dta-pizzeria-console</artifactId>
 	<packaging>jar</packaging>
 
 	<name>dta-pizzeria-console</name>
@@ -33,8 +33,8 @@
 		</dependency>
 	</dependencies>
 	<parent>
-		<groupId>dta-pizzeria</groupId>
-		<artifactId>dta-pizzeria</artifactId>
+		<groupId>dta.pizzeria</groupId>
+		<artifactId>kevin-dta-pizzeria</artifactId>
 		<version>1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
