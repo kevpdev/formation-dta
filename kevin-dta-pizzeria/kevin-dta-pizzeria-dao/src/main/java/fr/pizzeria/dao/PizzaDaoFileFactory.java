@@ -90,8 +90,7 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 			if (field != null && field.getName() != "nbPizzas") {
 				field.setAccessible(true);
 				getProp().setProperty(field.getName(), field.get(pizza).toString());
-				// field.getName();
-				// field.get(pizza);
+
 			}
 		}
 		prop.store(output, null);

@@ -19,7 +19,7 @@ public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 	public PizzaDaoMemoryFactory() throws FileNotFoundException {
 
 		// TODO Auto-generated constructor stub
-		pizzas.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza(0, "PEP", "Pï¿½pï¿½roni", 12.50, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.SANS_VIANDE));
 		pizzas.add(new Pizza(2, "REI", "Reine", 11.50, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza(3, "FRO", "La 4 fromages", 12.00, CategoriePizza.VIANDE));
@@ -29,22 +29,6 @@ public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 		pizzas.add(new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.VIANDE));
 
 	}
-	//
-	// public void savePizzasFile(String filename) throws FileNotFoundException
-	// {
-	// PrintWriter pw = new PrintWriter(new FileOutputStream(filename));
-	// pizzas.forEach(value -> {
-	// pw.println(value);
-	// });
-	//
-	// pw.close();
-	// }
-
-	// public List<Pizza> getPizzasFile(String filename) {
-	// Stream<String> stream = Files.lines(Paths.get(filename));
-	// // pizzas = (Pizza)stream.collect(Collectors.toList());
-	// return null;
-	// }
 
 	@Override
 	public List<Pizza> findAllPizzas() {

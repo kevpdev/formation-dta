@@ -27,7 +27,6 @@ public class ListPizza extends Option {
 
 		pizzas.forEach(System.out::println);
 
-		// ihmUtil.getPizzaDao().savePizzasFile(ihmUtil.getFilename());
 	}
 
 	@Override
