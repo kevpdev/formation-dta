@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.Pizza;
@@ -70,6 +71,7 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 				pizzas.add(pizza);
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException | NoSuchMethodException | SecurityException | IOException e1) {
+				Logger.getLogger(PizzaDaoJdbcFactory.class.getName()).severe(e1.getMessage());
 				throw new PizzaException(e1);
 			}
 
@@ -96,6 +98,7 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 			prop.store(output, null);
 			output.close();
 		} catch (IOException | IllegalArgumentException | IllegalAccessException e) {
+			Logger.getLogger(PizzaDaoJdbcFactory.class.getName()).severe(e.getMessage());
 			throw new PizzaException(e);
 		}
 		return true;

@@ -3,6 +3,7 @@ package fr.pizzeria.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,108 +30,176 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 	public List<Pizza> findAllPizzas() {
 		List<Pizza> pizzas = new ArrayList<>();
 
-		try (Connection con = getpc().getConnection()) {
+		return execute((con, st) -> {
+			try {
+				ResultSet resultat = st.executeQuery("SELECT * FROM pizza");
 
-			java.sql.Statement statement = con.createStatement();
-			ResultSet resultat = statement.executeQuery("SELECT * FROM pizza");
-			while (resultat.next()) {
-				pizzas.add(
-						new Pizza(resultat.getInt("id"), resultat.getString("reference"), resultat.getString("libelle"),
-								resultat.getDouble("prix"), CategoriePizza.valueOf(resultat.getString("categ_pizza"))));
+				while (resultat.next()) {
+					pizzas.add(new Pizza(resultat.getInt("id"), resultat.getString("reference"),
+							resultat.getString("libelle"), resultat.getDouble("prix"),
+							CategoriePizza.valueOf(resultat.getString("categ_pizza"))));
 
+				}
+
+			} catch (SQLException e) {
+				throw new PizzaException(e);
 			}
-			statement.close();
 
-		} catch (SQLException e) {
-			throw new PizzaException(e);
-		}
-		return pizzas;
+			return pizzas;
+
+		});
+
 	}
 
 	@Override
 	public boolean addPizza(Pizza pizza) {
-		try (Connection con = getpc().getConnection()) {
-			java.sql.PreparedStatement update = con
-					.prepareStatement("INSERT INTO pizza (libelle, reference, prix, categ_pizza) value(?, ?, ?)");
-			update.setString(1, pizza.getNom());
-			update.setString(2, pizza.getCode());
-			update.setDouble(3, pizza.getPrix());
-			update.setString(4, pizza.getCategPizza().toString());
-			update.executeUpdate();
-			update.close();
-		} catch (SQLException e) {
-			throw new PizzaException(e);
-		}
 
-		return true;
+		return executePrep((con) -> {
+			try {
+
+				java.sql.PreparedStatement update = con
+						.prepareStatement("INSERT INTO pizza (libelle, reference, prix, categ_pizza) value(?, ?, ?)");
+				update.setString(1, pizza.getNom());
+				update.setString(2, pizza.getCode());
+				update.setDouble(3, pizza.getPrix());
+				update.setString(4, pizza.getCategPizza().toString());
+				update.executeUpdate();
+
+				return true;
+
+			} catch (SQLException e) {
+				throw new PizzaException(e);
+			}
+
+		});
 	}
 
 	@Override
 	public boolean updatePizza(Pizza pizza) {
-		try (Connection con = getpc().getConnection()) {
-			java.sql.PreparedStatement update = con.prepareStatement(
-					"UPDATE pizza SET libelle = ?, reference = ?, prix =  ?, categ_pizza = ? WHERE id = ?");
-			update.setString(1, pizza.getNom());
-			update.setString(2, pizza.getCode());
-			update.setDouble(3, pizza.getPrix());
-			update.setString(4, pizza.getCategPizza().toString());
-			update.setInt(5, pizza.getId());
-			update.executeUpdate();
-			update.close();
-		} catch (SQLException e) {
-			throw new PizzaException(e);
-		}
-		return true;
+
+		return executePrep((con) -> {
+			try {
+
+				java.sql.PreparedStatement update = con.prepareStatement(
+						"UPDATE pizza SET libelle = ?, reference = ?, prix =  ?, categ_pizza = ? WHERE id = ?");
+				update.setString(1, pizza.getNom());
+				update.setString(2, pizza.getCode());
+				update.setDouble(3, pizza.getPrix());
+				update.setString(4, pizza.getCategPizza().toString());
+				update.setInt(5, pizza.getId());
+				update.executeUpdate();
+
+				return true;
+
+			} catch (SQLException e) {
+				throw new PizzaException(e);
+			}
+
+		});
 	}
 
 	@Override
 	public boolean deletePizza(Pizza pizza) {
-		try (Connection con = getpc().getConnection()) {
-			java.sql.PreparedStatement update = con.prepareStatement("DELETE FROM pizza WHERE id = ?");
-			update.setInt(1, pizza.getId());
-			update.executeUpdate();
-			update.close();
-		} catch (SQLException e) {
-			throw new PizzaException(e);
-		}
-		return true;
+		return executePrep((con) -> {
+			try {
+
+				java.sql.PreparedStatement update = con.prepareStatement("DELETE FROM pizza WHERE id = ?");
+
+				update.setInt(1, pizza.getId());
+				update.executeUpdate();
+				return true;
+
+			} catch (SQLException e) {
+				throw new PizzaException(e);
+			}
+
+		});
 
 	}
 
 	@Override
 	public Pizza getPizzaByCode(Object code) {
-		try (Connection con = getpc().getConnection()) {
-			java.sql.PreparedStatement select = con.prepareStatement("SELECT * FROM pizza WHERE reference = ?");
-			select.setString(1, code.toString());
-			ResultSet resultat = select.executeQuery();
-			while (resultat.next()) {
-				return new Pizza(resultat.getInt("id"), resultat.getString("reference"), resultat.getString("libelle"),
-						resultat.getDouble("prix"));
+		Pizza pizza = new Pizza();
+		return executePrep((con) -> {
+			try {
 
+				java.sql.PreparedStatement select = con.prepareStatement("SELECT * FROM pizza WHERE reference = ?");
+				select.setString(1, code.toString());
+				ResultSet resultat = select.executeQuery();
+				while (resultat.next()) {
+
+					pizza.setId(resultat.getInt("id"));
+					pizza.setCode(resultat.getString("reference"));
+					pizza.setNom(resultat.getString("libelle"));
+					pizza.setPrix(resultat.getDouble("prix"));
+					pizza.setCategPizza(CategoriePizza.valueOf(resultat.getString("categ_pizza")));
+
+					break;
+
+				}
+				resultat.close();
+			} catch (SQLException e) {
+				throw new PizzaException(e);
 			}
-			select.close();
-		} catch (SQLException e) {
-			throw new PizzaException(e);
-		}
-		return null;
+			return pizza;
+
+		});
 	}
 
 	@Override
 	public Pizza getPizzaByPizza(Pizza pizza) {
-		try (Connection con = getpc().getConnection()) {
-			java.sql.PreparedStatement select = con.prepareStatement("SELECT * FROM pizza WHERE reference = ?");
-			select.setString(1, pizza.getCode());
-			ResultSet resultat = select.executeQuery();
-			while (resultat.next()) {
-				return new Pizza(resultat.getInt("id"), resultat.getString("reference"), resultat.getString("libelle"),
-						resultat.getDouble("prix"));
+		return executePrep((con) -> {
+			try {
 
+				java.sql.PreparedStatement select = con.prepareStatement("SELECT * FROM pizza WHERE reference = ?");
+				select.setString(1, pizza.getCode());
+				ResultSet resultat = select.executeQuery();
+				while (resultat.next()) {
+
+					pizza.setId(resultat.getInt("id"));
+					pizza.setCode(resultat.getString("reference"));
+					pizza.setNom(resultat.getString("libelle"));
+					pizza.setPrix(resultat.getDouble("prix"));
+					pizza.setCategPizza(CategoriePizza.valueOf(resultat.getString("categ_pizza")));
+
+					break;
+
+				}
+				resultat.close();
+			} catch (SQLException e) {
+				throw new PizzaException(e);
 			}
-			select.close();
+			return pizza;
+
+		});
+	}
+
+	interface IRunSql<T> {
+		T exec(Connection con, Statement st);
+	}
+
+	interface IRunSqlPrep<T> {
+		T exec(Connection conn) throws SQLException;
+	}
+
+	public <T> T execute(IRunSql<T> run) {
+		try (Connection con = getpc().getConnection(); Statement stat = con.createStatement()) {
+
+			return run.exec(con, stat);
 		} catch (SQLException e) {
 			throw new PizzaException(e);
 		}
-		return null;
+
+	}
+
+	public <T> T executePrep(IRunSqlPrep<T> run) {
+		try (Connection con = getpc().getConnection()) {
+
+			return run.exec(con);
+		} catch (SQLException e) {
+			throw new PizzaException(e);
+		}
+
 	}
 
 }

@@ -31,7 +31,21 @@
 			<artifactId>kevin-dta-pizzeria-dao</artifactId>
 			<version>1</version>
 		</dependency>
+				<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.40</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>base</id>
+			<properties>
+				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+			</properties>
+		</profile>
+	</profiles>
 	<parent>
 		<groupId>dta.pizzeria</groupId>
 		<artifactId>kevin-dta-pizzeria</artifactId>
