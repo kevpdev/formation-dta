@@ -14,6 +14,28 @@
     <finalName>dta-pizzeria</finalName>
     <pluginManagement />
   </build>
+  <profiles>
+    <profile>
+      <id>base</id>
+      <properties>
+        <mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+      </properties>
+    </profile>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+        <dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+        <dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
+      </properties>
+    </profile>
+  </profiles>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

@@ -28,7 +28,8 @@ public class Menu {
 		this.options.put(3, new DeletePizza(ihmUtil));
 		this.options.put(4, new ListPizzaByCatag(ihmUtil));
 		this.options.put(5, new PizzaTarifMax(ihmUtil));
-		this.options.put(6, new ExistMenu());
+		this.options.put(6, new ImportPizza(ihmUtil));
+		this.options.put(7, new ExistMenu());
 
 		this.ihmUtil = ihmUtil;
 	}
@@ -68,7 +69,7 @@ public class Menu {
 
 		} while (notInteger);
 
-		if (action < 7) {
+		if (action < 8) {
 
 			this.options.get(action - 1).executeOption();
 

@@ -75,24 +75,8 @@
 			</resource>
 		</resources>
 	</build>
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<!-- <dao.impl>fr.pizzeria.dao.PizzaDaoMemoryFactory</dao.impl> -->
-				<dao.impl>fr.pizzeria.dao.PizzaDaoFileFactory</dao.impl>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<dao.impl>fr.pizzeria.dao.PizzaDaoFileFactory</dao.impl>
-			</properties>
-		</profile>
-	</profiles>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<dao.impl>fr.pizzeria.dao.PizzaDaoFileFactory</dao.impl>
 	</properties>
 	<dependencies>
 		<dependency>

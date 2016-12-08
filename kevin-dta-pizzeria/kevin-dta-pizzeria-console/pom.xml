@@ -15,7 +15,7 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				
+
 			</plugins>
 		</pluginManagement>
 		<finalName>dta-pizzeria</finalName>
@@ -31,17 +31,36 @@
 			<artifactId>kevin-dta-pizzeria-dao</artifactId>
 			<version>1</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.40</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
 		</dependency>
 	</dependencies>
 	<profiles>
 		<profile>
 			<id>base</id>
 			<properties>
+				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
+				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
 				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
 			</properties>
 		</profile>

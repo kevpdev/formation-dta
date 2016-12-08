@@ -57,8 +57,8 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 		return executePrep((con) -> {
 			try {
 
-				java.sql.PreparedStatement update = con
-						.prepareStatement("INSERT INTO pizza (libelle, reference, prix, categ_pizza) value(?, ?, ?)");
+				java.sql.PreparedStatement update = con.prepareStatement(
+						"INSERT INTO pizza (libelle, reference, prix, categ_pizza) value(?, ?, ?, ?)");
 				update.setString(1, pizza.getNom());
 				update.setString(2, pizza.getCode());
 				update.setDouble(3, pizza.getPrix());

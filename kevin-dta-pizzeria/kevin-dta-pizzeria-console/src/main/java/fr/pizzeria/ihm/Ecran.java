@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoFactory;
-import fr.pizzeria.dao.PizzaDaoJdbcFactory;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
@@ -30,7 +29,7 @@ public class Ecran {
 		Scanner sc = new Scanner(System.in).useLocale(Locale.US);
 
 		IhmUtil ihmUtil;
-		ihmUtil = new IhmUtil(sc, new PizzaDaoJdbcFactory());
+		ihmUtil = new IhmUtil(sc, daofactory);
 		Menu menu = new Menu("***** Pizzeria Administration *****", ihmUtil);
 		menu.start();
 
