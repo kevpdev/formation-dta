@@ -50,14 +50,6 @@ public class Menu {
 
 		System.out.println(this.titre);
 
-		// for (Option option : options) {
-		// System.out.println(option.libelle);
-		// }
-
-		// for (Map.Entry<Integer, Option> entree : options.entrySet()) {
-		// System.out.println(entree.getValue().libelle);
-		// }
-
 		options.forEach((key, value) -> {
 			System.out.println(value.getLibelle());
 		});

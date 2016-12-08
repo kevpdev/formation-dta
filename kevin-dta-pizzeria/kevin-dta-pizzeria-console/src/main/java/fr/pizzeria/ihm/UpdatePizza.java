@@ -2,6 +2,7 @@ package fr.pizzeria.ihm;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +24,8 @@ public class UpdatePizza extends Option {
 
 	@Override
 	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException,
+			SQLException {
 
 		ListPizza listp = new ListPizza(ihmUtil);
 		listp.executeOption();
@@ -66,7 +68,6 @@ public class UpdatePizza extends Option {
 
 	@Override
 	public void libelleOption() {
-		// TODO Auto-generated method stub
 		System.out.println(getLibelle());
 	}
 

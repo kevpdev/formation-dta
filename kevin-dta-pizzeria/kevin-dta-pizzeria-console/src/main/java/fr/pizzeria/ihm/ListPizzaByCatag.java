@@ -2,6 +2,7 @@ package fr.pizzeria.ihm;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -16,14 +17,14 @@ public class ListPizzaByCatag extends Option {
 	public IhmUtil ihmUtil;
 
 	public ListPizzaByCatag(IhmUtil ihmUtil) {
-		// TODO Auto-generated constructor stub
 		this.setLibelle("5. Lister les pizzas group�es par cat�gorie");
 		this.ihmUtil = ihmUtil;
 	}
 
 	@Override
 	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException,
+			SQLException {
 
 		List<Pizza> pizzas = ihmUtil.getPizzaDao().findAllPizzas();
 		Map<CategoriePizza, List<Pizza>> map = pizzas.stream().collect(Collectors.groupingBy(Pizza::getCategPizza));
@@ -36,7 +37,6 @@ public class ListPizzaByCatag extends Option {
 
 	@Override
 	public void libelleOption() {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -20,7 +20,6 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoFileFactory implements PizzaDaoFactory {
 
-	// private List<Pizza> pizzas = new ArrayList<Pizza>();
 	private String folderPath = "data/pizza/";
 	private Properties prop;
 
@@ -54,10 +53,8 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 
 					if (field.getType().isEnum()) {
 						valeur = getProp().get(key).toString().toUpperCase();
-						// field.set(pizza, valeur);
 					} else {
 						valeur = getProp().get(key).toString();
-						// field.set(pizza, valeur);
 					}
 
 					valeur = field.getType()
@@ -101,25 +98,25 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 
 	@Override
 	public boolean updatePizza(Pizza pizza) throws PizzaException, FileNotFoundException {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
 	@Override
 	public boolean deletePizza(Pizza pizza) throws PizzaException, FileNotFoundException {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
 	@Override
 	public Pizza getPizzaByCode(Object code) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public Pizza getPizzaByPizza(Pizza pizza) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -133,15 +130,5 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 	public void setProp(Properties prop) {
 		this.prop = prop;
 	}
-
-	// public void savePizzasFile(String filename, Pizza pizza) throws
-	// FileNotFoundException {
-	// PrintWriter pw = new PrintWriter(new FileOutputStream(filename));
-	// pizzas.forEach(value -> {
-	// pw.println(value);
-	// });
-	//
-	// pw.close();
-	// }
 
 }

@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoFactory;
+import fr.pizzeria.dao.PizzaDaoJdbcFactory;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
@@ -13,7 +14,6 @@ public class Ecran {
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvocationTargetException, NoSuchMethodException, SecurityException {
-		// TODO Auto-generated method stub
 
 		Pizza p1 = new Pizza();
 		p1.setCode("MAR");
@@ -30,7 +30,7 @@ public class Ecran {
 		Scanner sc = new Scanner(System.in).useLocale(Locale.US);
 
 		IhmUtil ihmUtil;
-		ihmUtil = new IhmUtil(sc, daofactory);
+		ihmUtil = new IhmUtil(sc, new PizzaDaoJdbcFactory());
 		Menu menu = new Menu("***** Pizzeria Administration *****", ihmUtil);
 		menu.start();
 

@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,14 +16,13 @@ public class AddPizza extends Option {
 	public IhmUtil ihmUtil;
 
 	public AddPizza(IhmUtil ihmUtil) {
-		// TODO Auto-generated constructor stub
 		this.setLibelle("2. Ajouter une pizza");
 		this.ihmUtil = ihmUtil;
 	}
 
 	@Override
-	public void executeOption() throws PizzaException, IllegalArgumentException, IllegalAccessException, IOException {
-		// TODO Auto-generated method stub
+	public void executeOption()
+			throws PizzaException, IllegalArgumentException, IllegalAccessException, IOException, SQLException {
 
 		System.out.println("Ajout d'une nouvelle pizza");
 
@@ -35,7 +35,7 @@ public class AddPizza extends Option {
 		System.out.print("Veuillez saisir le prix: ");
 		double prix = ihmUtil.getScanner().nextDouble();
 
-		System.out.println("Liste des catégories: ");
+		System.out.println("Liste des catï¿½gories: ");
 		List<CategoriePizza> listCateg = new ArrayList<>(Arrays.asList(CategoriePizza.values()));
 
 		for (int i = 0; i < listCateg.size(); i++) {
@@ -44,23 +44,16 @@ public class AddPizza extends Option {
 
 		}
 
-		// listCateg.forEach((value) -> {
-		// int a = 0;
-		// System.out.println(a + ". " + value.getNomCateg());
-		// a++;
-		// });
-
-		System.out.print("Veuillez saisir le numéro de la catégorie: ");
+		System.out.print("Veuillez saisir le numï¿½ro de la catï¿½gorie: ");
 		int categ = ihmUtil.getScanner().nextInt();
 
 		Pizza pizza = new Pizza(0, code, nom, prix, listCateg.get(categ - 1));
-		System.out.println(ihmUtil.getPizzaDao().addPizza(pizza) ? "Ajout éffectué !" : "Echec de l'ajout !");
+		System.out.println(ihmUtil.getPizzaDao().addPizza(pizza) ? "Ajout ï¿½ffectuï¿½ !" : "Echec de l'ajout !");
 
 	}
 
 	@Override
 	public void libelleOption() {
-		// TODO Auto-generated method stub
 		System.out.println(getLibelle());
 
 	}
