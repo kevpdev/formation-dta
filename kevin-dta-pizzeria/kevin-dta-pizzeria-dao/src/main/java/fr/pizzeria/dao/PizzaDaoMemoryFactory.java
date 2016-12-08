@@ -6,7 +6,6 @@ import java.util.List;
 
 import fr.pizzeria.excepetion.AddPizzaException;
 import fr.pizzeria.excepetion.DeletePizzaException;
-import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.excepetion.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -32,15 +31,11 @@ public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 
 	@Override
 	public List<Pizza> findAllPizzas() {
-		// TODO Auto-generated method stub
-		// pizzas.stream().map(t -> t.getCode()).filter(t ->
-		// t.toString().length() > 0).reduce((t1, t2)-> t1+t2);
-
 		return pizzas;
 	}
 
 	@Override
-	public boolean addPizza(Pizza pizza) throws PizzaException, FileNotFoundException {
+	public boolean addPizza(Pizza pizza) {
 
 		if (!isValid(pizza)) {
 			throw new AddPizzaException();
@@ -57,7 +52,7 @@ public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 	}
 
 	@Override
-	public boolean updatePizza(Pizza pizza) throws PizzaException, FileNotFoundException {
+	public boolean updatePizza(Pizza pizza) {
 
 		if (!isValid(pizza)) {
 			throw new UpdatePizzaException();
@@ -79,7 +74,7 @@ public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 	}
 
 	@Override
-	public boolean deletePizza(Pizza pizza) throws PizzaException, FileNotFoundException {
+	public boolean deletePizza(Pizza pizza) {
 
 		if (!isValid(pizza)) {
 			throw new DeletePizzaException();
@@ -117,7 +112,6 @@ public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 
 	@Override
 	public Pizza getPizzaByPizza(Pizza pizza) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

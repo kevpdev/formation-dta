@@ -1,12 +1,9 @@
 package fr.pizzeria.ihm;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
@@ -21,8 +18,7 @@ public class AddPizza extends Option {
 	}
 
 	@Override
-	public void executeOption()
-			throws PizzaException, IllegalArgumentException, IllegalAccessException, IOException, SQLException {
+	public void executeOption() {
 
 		System.out.println("Ajout d'une nouvelle pizza");
 

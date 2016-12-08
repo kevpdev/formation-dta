@@ -13,16 +13,12 @@ public class PoolConnection {
 
 	}
 
-	public Connection getConnection() {
+	public Connection getConnection() throws SQLException {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
 		String driver = bundle.getString("mysql.driver");
-		try {
-			con = DriverManager.getConnection(driver, "root", "");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		con = DriverManager.getConnection(driver, "root", "");
 
 		return con;
 	}

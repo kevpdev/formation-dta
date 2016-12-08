@@ -1,6 +1,5 @@
 package fr.pizzeria.ihm;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -56,13 +55,12 @@ public class Menu {
 
 	}
 
-	public void action() throws InvocationTargetException, NoSuchMethodException, SecurityException {
+	public void action() {
 
 		Integer action = 0;
 		boolean notInteger = true;
 
 		do {
-
 			System.out.print("Votre choix : ");
 			Scanner sc = new Scanner(System.in);
 			action = sc.nextInt();
@@ -70,24 +68,20 @@ public class Menu {
 
 		} while (notInteger);
 
-		try {
-			if (action < 7) {
+		if (action < 7) {
 
-				this.options.get(action - 1).executeOption();
+			this.options.get(action - 1).executeOption();
 
-				start();
+			start();
 
-			} else if (action == 99) {
+		} else if (action == 99) {
 
-				this.options.get(4).executeOption();
-			}
-		} catch (Exception e) {
-			LOGGER.info(e.getMessage());
+			this.options.get(4).executeOption();
 		}
 
 	}
 
-	public void start() throws InvocationTargetException, NoSuchMethodException, SecurityException {
+	public void start() {
 		display();
 		action();
 	}

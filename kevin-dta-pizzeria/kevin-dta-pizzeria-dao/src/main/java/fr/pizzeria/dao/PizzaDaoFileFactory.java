@@ -2,7 +2,6 @@ package fr.pizzeria.dao;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,86 +23,92 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 	private Properties prop;
 
 	@Override
-	public List<Pizza> findAllPizzas() throws IOException, InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public List<Pizza> findAllPizzas() {
 		List<Pizza> pizzas = new ArrayList<Pizza>();
 		File f = new File(folderPath);
 		ArrayList<String> files = new ArrayList<String>(Arrays.asList(f.list()));
 
 		for (String filePath : files) {
 			String path = folderPath + filePath;
-			InputStream input = new FileInputStream(path);
-			List<Field> fields = new ArrayList<>(Arrays.asList(Pizza.class.getDeclaredFields()));
-			Pizza pizza = Pizza.class.newInstance();
-			// chargement des donn�es du fichier
-			getProp().load(input);
+			Pizza pizza;
+			try {
+				InputStream input = new FileInputStream(path);
+				List<Field> fields = new ArrayList<>(Arrays.asList(Pizza.class.getDeclaredFields()));
 
-			// list des valeurs des champs de la classe pizza
-			Set<Object> keys = getProp().keySet();
-			// List<Object> listval = new
-			// ArrayList<>(Arrays.asList(getProp().values().toArray()));
+				pizza = Pizza.class.newInstance();
+				getProp().load(input);
 
-			for (Object key : keys) {
+				// list des clés des champs de la classe pizza
+				Set<Object> keys = getProp().keySet();
+				// List<Object> listval = new
+				// ArrayList<>(Arrays.asList(getProp().values().toArray()));
 
-				Field field = fields.stream().filter(a -> a.getName().equals(key.toString())).findFirst().orElse(null);
-				if (field != null) {
-					field.setAccessible(true);
+				for (Object key : keys) {
 
-					Object valeur = null;
+					Field field = fields.stream().filter(a -> a.getName().equals(key.toString())).findFirst()
+							.orElse(null);
+					if (field != null) {
+						field.setAccessible(true);
 
-					if (field.getType().isEnum()) {
-						valeur = getProp().get(key).toString().toUpperCase();
-					} else {
-						valeur = getProp().get(key).toString();
+						Object valeur = null;
+
+						if (field.getType().isEnum()) {
+							valeur = getProp().get(key).toString().toUpperCase();
+						} else {
+							valeur = getProp().get(key).toString();
+						}
+
+						valeur = field.getType()
+								.getDeclaredMethod("valueOf",
+										(field.getType().isAssignableFrom(String.class) ? Object.class : String.class))
+								.invoke(null, valeur);
+
+						field.set(pizza, valeur);
 					}
-
-					valeur = field.getType()
-							.getDeclaredMethod("valueOf",
-									(field.getType().isAssignableFrom(String.class) ? Object.class : String.class))
-							.invoke(null, valeur);
-
-					field.set(pizza, valeur);
-
 				}
 
+				pizzas.add(pizza);
+			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException | NoSuchMethodException | SecurityException | IOException e1) {
+				throw new PizzaException(e1);
 			}
 
-			// System.out.println(pizza);
-			pizzas.add(pizza);
 		}
-
 		return pizzas;
 
 	}
 
 	@Override
-	public boolean addPizza(Pizza pizza)
-			throws PizzaException, IllegalArgumentException, IllegalAccessException, IOException {
-		String filename = folderPath + pizza.getCode() + ".properties";
-		OutputStream output = new FileOutputStream(filename);
+	public boolean addPizza(Pizza pizza) {
 
-		Field[] champs = Pizza.class.getDeclaredFields();
-		for (Field field : champs) {
-			if (field != null && field.getName() != "nbPizzas") {
-				field.setAccessible(true);
-				getProp().setProperty(field.getName(), field.get(pizza).toString());
+		try {
+			String filename = folderPath + pizza.getCode() + ".properties";
+			OutputStream output = new FileOutputStream(filename);
 
+			Field[] champs = Pizza.class.getDeclaredFields();
+			for (Field field : champs) {
+				if (field != null && field.getName() != "nbPizzas") {
+					field.setAccessible(true);
+					getProp().setProperty(field.getName(), field.get(pizza).toString());
+
+				}
 			}
+			prop.store(output, null);
+			output.close();
+		} catch (IOException | IllegalArgumentException | IllegalAccessException e) {
+			throw new PizzaException(e);
 		}
-		prop.store(output, null);
-
-		output.close();
 		return true;
 	}
 
 	@Override
-	public boolean updatePizza(Pizza pizza) throws PizzaException, FileNotFoundException {
+	public boolean updatePizza(Pizza pizza) {
 
 		return false;
 	}
 
 	@Override
-	public boolean deletePizza(Pizza pizza) throws PizzaException, FileNotFoundException {
+	public boolean deletePizza(Pizza pizza) {
 
 		return false;
 	}

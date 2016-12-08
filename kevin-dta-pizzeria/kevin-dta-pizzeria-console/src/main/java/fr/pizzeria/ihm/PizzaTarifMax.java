@@ -1,12 +1,8 @@
 package fr.pizzeria.ihm;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 
-import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
@@ -20,9 +16,7 @@ public class PizzaTarifMax extends Option {
 	}
 
 	@Override
-	public void executeOption() throws PizzaException, IOException, InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException,
-			SQLException {
+	public void executeOption() {
 
 		List<Pizza> pizzas = ihmUtil.getPizzaDao().findAllPizzas();
 		Pizza pizzaMax = pizzas.stream().max(Comparator.comparing(Pizza::getPrix)).get();

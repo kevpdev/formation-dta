@@ -1,8 +1,5 @@
 package fr.pizzeria.ihm;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import fr.pizzeria.model.Pizza;
@@ -20,9 +17,7 @@ public class DeletePizza extends Option {
 	}
 
 	@Override
-	public void executeOption()
-			throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, NoSuchMethodException, SecurityException, SQLException {
+	public void executeOption() {
 		ListPizza listp = new ListPizza(ihmUtil);
 		listp.executeOption();
 
