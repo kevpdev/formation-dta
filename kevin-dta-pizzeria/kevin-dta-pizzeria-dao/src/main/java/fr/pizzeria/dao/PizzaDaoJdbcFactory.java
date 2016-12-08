@@ -39,6 +39,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 								resultat.getDouble("prix"), CategoriePizza.valueOf(resultat.getString("categ_pizza"))));
 
 			}
+			statement.close();
 
 		} catch (SQLException e) {
 			throw new PizzaException(e);
@@ -56,7 +57,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 			update.setDouble(3, pizza.getPrix());
 			update.setString(4, pizza.getCategPizza().toString());
 			update.executeUpdate();
-
+			update.close();
 		} catch (SQLException e) {
 			throw new PizzaException(e);
 		}
@@ -75,7 +76,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 			update.setString(4, pizza.getCategPizza().toString());
 			update.setInt(5, pizza.getId());
 			update.executeUpdate();
-
+			update.close();
 		} catch (SQLException e) {
 			throw new PizzaException(e);
 		}
@@ -88,7 +89,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 			java.sql.PreparedStatement update = con.prepareStatement("DELETE FROM pizza WHERE id = ?");
 			update.setInt(1, pizza.getId());
 			update.executeUpdate();
-
+			update.close();
 		} catch (SQLException e) {
 			throw new PizzaException(e);
 		}
@@ -107,6 +108,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 						resultat.getDouble("prix"));
 
 			}
+			select.close();
 		} catch (SQLException e) {
 			throw new PizzaException(e);
 		}
@@ -124,6 +126,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 						resultat.getDouble("prix"));
 
 			}
+			select.close();
 		} catch (SQLException e) {
 			throw new PizzaException(e);
 		}

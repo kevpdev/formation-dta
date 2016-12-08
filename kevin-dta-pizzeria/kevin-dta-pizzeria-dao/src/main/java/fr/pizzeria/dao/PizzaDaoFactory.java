@@ -19,6 +19,4 @@ public interface PizzaDaoFactory {
 
 	Pizza getPizzaByPizza(Pizza pizza) throws PizzaException;
 
-	// public void savePizzas(String filename) throws FileNotFoundException;
-
 }

@@ -11,26 +11,8 @@ public class AddPizzaException extends PizzaException {
 		super();
 	}
 
-	public AddPizzaException(String arg0, Throwable arg1, boolean arg2, boolean arg3) {
-		super(arg0, arg1, arg2, arg3);
-	}
-
-	public AddPizzaException(String arg0, Throwable arg1) {
-		super(arg0, arg1);
-	}
-
-	public AddPizzaException(String arg0) {
-		super(arg0);
-	}
-
-	public AddPizzaException(Throwable arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return "Erreur Ajout : " + super.getMessage();
 	}
 
