@@ -16,10 +16,16 @@ public class ImportPizza extends Option {
 	@Override
 	public void executeOption() {
 
+		System.out.println("Voulez-vous importer les données (O/N) ?");
+
+		String rep = ihmUtil.getScanner().next();
+		System.out.println("O".equals(rep) ? ihmUtil.getPizzaDao().importPizza() : "pas d'importation");
+
 	}
 
 	@Override
 	public void libelleOption() {
+		System.out.println(getLibelle());
 
 	}
 

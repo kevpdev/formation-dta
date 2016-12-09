@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
-			<version>4.0</version>
+			<version>4.1</version>
 		</dependency>
 	</dependencies>
 	<profiles>
@@ -55,6 +55,12 @@
 			<properties>
 				<dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
 				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev2</id>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.PizzaDaoFileFactory</dao.impl>
 			</properties>
 		</profile>
 		<profile>

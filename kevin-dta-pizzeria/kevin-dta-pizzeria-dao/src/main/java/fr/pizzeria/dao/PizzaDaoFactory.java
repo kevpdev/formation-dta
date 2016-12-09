@@ -19,4 +19,8 @@ public interface PizzaDaoFactory {
 
 	Pizza getPizzaByPizza(Pizza pizza) throws PizzaException;
 
+	default boolean importPizza() throws PizzaException {
+		throw new PizzaException("pas d'implémentation");
+	}
+
 }

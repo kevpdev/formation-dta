@@ -20,7 +20,6 @@ public class ListPizza extends Option {
 	public void executeOption() {
 		ihmUtil.getPizzaDao().findAllPizzas();
 		List<Pizza> pizzas = ihmUtil.getPizzaDao().findAllPizzas();
-
 		pizzas.forEach(System.out::println);
 
 	}

@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.collections4.ListUtils;
+
 import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -200,6 +202,48 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 			throw new PizzaException(e);
 		}
 
+	}
+
+	public boolean importPizza() throws PizzaException {
+		List<Pizza> pizzasFile = new PizzaDaoFileFactory().findAllPizzas();
+
+		List<List<Pizza>> superListPizzas = ListUtils.partition(pizzasFile, 3);
+
+		return executePrep((con) -> {
+
+			con.setAutoCommit(false);
+			java.sql.PreparedStatement update = con
+					.prepareStatement("INSERT INTO pizza (libelle, reference, prix, categ_pizza) value(?, ?, ?, ?)");
+			for (List<Pizza> pizzas : superListPizzas) {
+
+				try {
+
+					for (Pizza pizza : pizzas) {
+
+						update.setString(1, pizza.getNom());
+						update.setString(2, pizza.getCode());
+						update.setDouble(3, pizza.getPrix());
+						update.setString(4, pizza.getCategPizza().toString());
+						update.executeUpdate();
+					}
+
+					con.commit();
+
+				} catch (SQLException e) {
+					try {
+						con.rollback();
+					} catch (SQLException e1) {
+
+						throw new PizzaException(e1);
+					}
+
+				}
+
+			}
+
+			return true;
+
+		});
 	}
 
 }
