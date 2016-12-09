@@ -77,7 +77,7 @@ public class Menu {
 
 		} else if (action == 99) {
 
-			this.options.get(4).executeOption();
+			this.options.get(7).executeOption();
 		}
 
 	}

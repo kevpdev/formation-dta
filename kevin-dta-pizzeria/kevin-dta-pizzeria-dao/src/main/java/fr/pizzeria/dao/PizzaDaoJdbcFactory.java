@@ -204,7 +204,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 
 	}
 
-	public boolean importPizza() throws PizzaException {
+	public boolean importPizza() {
 		List<Pizza> pizzasFile = new PizzaDaoFileFactory().findAllPizzas();
 
 		List<List<Pizza>> superListPizzas = ListUtils.partition(pizzasFile, 3);

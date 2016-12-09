@@ -16,9 +16,9 @@ public class PoolConnection {
 	public Connection getConnection() throws SQLException {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
-		String driver = bundle.getString("mysql.driver");
+		String url = bundle.getString("jdbc.mysql.url");
 
-		con = DriverManager.getConnection(driver, "root", "");
+		con = DriverManager.getConnection(url, bundle.getString("jdbc.mysql.user"), bundle.getString("jdbc.mysql.pwd"));
 
 		return con;
 	}

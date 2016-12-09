@@ -1,27 +1,51 @@
 package fr.pizzeria.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
+@NamedQueries({ @NamedQuery(name = "pizza.findAll", query = "SELECT p FROM Pizza p"),
+		@NamedQuery(name = "pizza.findPizzaByCode", query = "SELECT p FROM Pizza p WHERE p.code = :code") })
+
+@Table(name = "pizza")
 public class Pizza {
 
 	@ToString
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@ToString
+	@Column(name = "reference", unique = true)
 	private String code;
 	@ToString
+	@Column(name = "libelle")
 	private String nom;
 	@ToString
 	private Double prix;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "categ_pizza")
 	@ToString
 	private CategoriePizza categPizza;
+	@Transient
 	public static int nbPizzas;
 
 	public Pizza() {
 
 	}
 
-	public Pizza(String code, String nom, double prix) {
+	public Pizza(String code, String nom, Double prix) {
 		super();
 
 		this.setId(nbPizzas);
@@ -31,14 +55,20 @@ public class Pizza {
 		nbPizzas++;
 	}
 
-	public Pizza(int id, String code, String nom, double prix) {
+	public Pizza(String code, String nom, Double prix, CategoriePizza categ) {
+		this(code, nom, prix);
+		nbPizzas++;
+		this.setCategPizza(categ);
+	}
+
+	public Pizza(Integer id, String code, String nom, Double prix) {
 		this(code, nom, prix);
 		nbPizzas++;
 		this.setId(id);
 
 	}
 
-	public Pizza(int id, String code, String nom, double prix, CategoriePizza categ) {
+	public Pizza(Integer id, String code, String nom, Double prix, CategoriePizza categ) {
 		this(id, code, nom, prix);
 
 		nbPizzas++;
@@ -50,7 +80,7 @@ public class Pizza {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -74,7 +104,7 @@ public class Pizza {
 		return prix;
 	}
 
-	public void setPrix(double prix) {
+	public void setPrix(Double prix) {
 		this.prix = prix;
 	}
 

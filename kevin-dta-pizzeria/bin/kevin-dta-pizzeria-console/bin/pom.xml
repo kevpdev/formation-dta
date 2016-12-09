@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>dta.pizzeria</groupId>
+	<artifactId>kevin-dta-pizzeria-console</artifactId>
+	<packaging>jar</packaging>
+
+	<name>dta-pizzeria-console</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<pluginManagement>
+			<plugins>
+
+			</plugins>
+		</pluginManagement>
+		<finalName>dta-pizzeria</finalName>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>dta.pizzeria</groupId>
+			<artifactId>kevin-dta-pizzeria-model</artifactId>
+			<version>1</version>
+		</dependency>
+		<dependency>
+			<groupId>dta.pizzeria</groupId>
+			<artifactId>kevin-dta-pizzeria-dao</artifactId>
+			<version>1</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.40</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.1</version>
+		</dependency>
+	</dependencies>
+	<profiles>
+		<profile>
+			<id>base</id>
+			<properties>
+				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
+				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev2</id>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.PizzaDaoFileFactory</dao.impl>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
+				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+			</properties>
+		</profile>
+	</profiles>
+	<parent>
+		<groupId>dta.pizzeria</groupId>
+		<artifactId>kevin-dta-pizzeria</artifactId>
+		<version>1</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+</project>
