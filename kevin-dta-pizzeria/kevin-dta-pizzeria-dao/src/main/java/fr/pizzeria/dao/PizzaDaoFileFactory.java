@@ -25,9 +25,9 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 
 	@Override
 	public List<Pizza> findAllPizzas() {
-		List<Pizza> pizzas = new ArrayList<Pizza>();
+		List<Pizza> pizzas = new ArrayList<>();
 		File f = new File(folderPath);
-		ArrayList<String> files = new ArrayList<String>(Arrays.asList(f.list()));
+		ArrayList<String> files = new ArrayList<>(Arrays.asList(f.list()));
 
 		for (String filePath : files) {
 			String path = folderPath + filePath;
@@ -41,8 +41,6 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 
 				// list des clés des champs de la classe pizza
 				Set<Object> keys = getProp().keySet();
-				// List<Object> listval = new
-				// ArrayList<>(Arrays.asList(getProp().values().toArray()));
 
 				for (Object key : keys) {
 
@@ -51,20 +49,13 @@ public class PizzaDaoFileFactory implements PizzaDaoFactory {
 					if (field != null) {
 						field.setAccessible(true);
 
-						Object valeur = null;
-
-						if (field.getType().isEnum()) {
-							valeur = getProp().get(key).toString().toUpperCase();
-						} else {
-							valeur = getProp().get(key).toString();
-						}
-
-						valeur = field.getType()
+						Object value = field.getType()
 								.getDeclaredMethod("valueOf",
-										(field.getType().isAssignableFrom(String.class) ? Object.class : String.class))
-								.invoke(null, valeur);
+										field.getType().isAssignableFrom(String.class) ? Object.class : String.class)
+								.invoke(null, field.getType().isEnum() ? getProp().get(key).toString().toUpperCase()
+										: getProp().get(key).toString());
 
-						field.set(pizza, valeur);
+						field.set(pizza, value);
 					}
 				}
 

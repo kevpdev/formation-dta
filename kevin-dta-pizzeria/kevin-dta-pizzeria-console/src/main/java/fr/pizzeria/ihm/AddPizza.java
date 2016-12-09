@@ -43,7 +43,7 @@ public class AddPizza extends Option {
 		System.out.print("Veuillez saisir le num�ro de la cat�gorie: ");
 		int categ = ihmUtil.getScanner().nextInt();
 
-		Pizza pizza = new Pizza(null, code, nom, prix, listCateg.get(categ - 1));
+		Pizza pizza = new Pizza(0, code, nom, prix, listCateg.get(categ - 1));
 		System.out.println(ihmUtil.getPizzaDao().addPizza(pizza) ? "Ajout �ffectu� !" : "Echec de l'ajout !");
 
 	}

@@ -36,6 +36,7 @@ public class PizzaDaoJpa implements PizzaDaoFactory {
 		EntityManager em = getEmf().createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
+		pizza.setId(null);
 		em.persist(pizza);
 		et.commit();
 

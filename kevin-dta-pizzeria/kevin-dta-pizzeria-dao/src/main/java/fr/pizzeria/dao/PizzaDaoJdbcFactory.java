@@ -17,11 +17,22 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 
 	private PoolConnection pc;
 
+	/**
+	 * 
+	 * Constructeur de la classe 9 déc. 2016
+	 * 
+	 * @author ETY11
+	 */
 	public PizzaDaoJdbcFactory() {
 
 	}
 
-	public PoolConnection getpc() {
+	/**
+	 * Getter
+	 * 
+	 * @return
+	 */
+	public PoolConnection getPc() {
 		if (pc == null) {
 			pc = new PoolConnection();
 		}
@@ -40,7 +51,6 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 					pizzas.add(new Pizza(resultat.getInt("id"), resultat.getString("reference"),
 							resultat.getString("libelle"), resultat.getDouble("prix"),
 							CategoriePizza.valueOf(resultat.getString("categ_pizza"))));
-
 				}
 
 			} catch (SQLException e) {
@@ -56,7 +66,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 	@Override
 	public boolean addPizza(Pizza pizza) {
 
-		return executePrep((con) -> {
+		return executePrep(con -> {
 			try {
 
 				java.sql.PreparedStatement update = con.prepareStatement(
@@ -79,7 +89,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 	@Override
 	public boolean updatePizza(Pizza pizza) {
 
-		return executePrep((con) -> {
+		return executePrep(con -> {
 			try {
 
 				java.sql.PreparedStatement update = con.prepareStatement(
@@ -102,7 +112,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 
 	@Override
 	public boolean deletePizza(Pizza pizza) {
-		return executePrep((con) -> {
+		return executePrep(con -> {
 			try {
 
 				java.sql.PreparedStatement update = con.prepareStatement("DELETE FROM pizza WHERE id = ?");
@@ -122,7 +132,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 	@Override
 	public Pizza getPizzaByCode(Object code) {
 		Pizza pizza = new Pizza();
-		return executePrep((con) -> {
+		return executePrep(con -> {
 			try {
 
 				java.sql.PreparedStatement select = con.prepareStatement("SELECT * FROM pizza WHERE reference = ?");
@@ -150,7 +160,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 
 	@Override
 	public Pizza getPizzaByPizza(Pizza pizza) {
-		return executePrep((con) -> {
+		return executePrep(con -> {
 			try {
 
 				java.sql.PreparedStatement select = con.prepareStatement("SELECT * FROM pizza WHERE reference = ?");
@@ -185,7 +195,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 	}
 
 	public <T> T execute(IRunSql<T> run) {
-		try (Connection con = getpc().getConnection(); Statement stat = con.createStatement()) {
+		try (Connection con = getPc().getConnection(); Statement stat = con.createStatement()) {
 
 			return run.exec(con, stat);
 		} catch (SQLException e) {
@@ -195,7 +205,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 	}
 
 	public <T> T executePrep(IRunSqlPrep<T> run) {
-		try (Connection con = getpc().getConnection()) {
+		try (Connection con = getPc().getConnection()) {
 
 			return run.exec(con);
 		} catch (SQLException e) {
