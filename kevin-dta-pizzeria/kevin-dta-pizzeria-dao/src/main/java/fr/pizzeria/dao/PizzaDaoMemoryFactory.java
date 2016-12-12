@@ -12,7 +12,7 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 
-	public static final List<Pizza> pizzas = new ArrayList<>();
+	protected static final List<Pizza> pizzas = new ArrayList<>();
 	public static final String filename = "pizzas.txt";
 
 	/**

@@ -1,5 +1,8 @@
 package fr.pizzeria.excepetion;
 
+/*
+ * Classe AddPizzaException
+ */
 public class AddPizzaException extends PizzaException {
 
 	/**
@@ -7,24 +10,15 @@ public class AddPizzaException extends PizzaException {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 */
 	public AddPizzaException() {
 		super();
-	}
-
-	public AddPizzaException(String arg0, Throwable arg1, boolean arg2, boolean arg3) {
-		super(arg0, arg1, arg2, arg3);
-	}
-
-	public AddPizzaException(String arg0, Throwable arg1) {
-		super(arg0, arg1);
-	}
-
-	public AddPizzaException(String arg0) {
-		super(arg0);
-	}
-
-	public AddPizzaException(Throwable arg0) {
-		super(arg0);
 	}
 
 	@Override

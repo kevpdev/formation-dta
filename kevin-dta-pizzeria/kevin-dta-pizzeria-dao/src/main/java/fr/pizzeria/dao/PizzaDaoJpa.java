@@ -10,9 +10,14 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Classe PizzaDaoMemoryFactory
+ * 
+ * @author ETY11
+ *
+ */
 public class PizzaDaoJpa implements PizzaDaoFactory {
 
 	private EntityManagerFactory emf;
@@ -24,7 +29,7 @@ public class PizzaDaoJpa implements PizzaDaoFactory {
 	}
 
 	@Override
-	public List<Pizza> findAllPizzas() throws PizzaException {
+	public List<Pizza> findAllPizzas() {
 
 		EntityManager em = getEmf().createEntityManager();
 		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findAll", Pizza.class);
@@ -33,7 +38,7 @@ public class PizzaDaoJpa implements PizzaDaoFactory {
 	}
 
 	@Override
-	public boolean addPizza(Pizza pizza) throws PizzaException {
+	public boolean addPizza(Pizza pizza) {
 
 		EntityManager em = getEmf().createEntityManager();
 		EntityTransaction et = em.getTransaction();
@@ -41,12 +46,13 @@ public class PizzaDaoJpa implements PizzaDaoFactory {
 		pizza.setId(null);
 		em.persist(pizza);
 		et.commit();
+		em.close();
 
 		return true;
 	}
 
 	@Override
-	public boolean updatePizza(Pizza pizza) throws PizzaException {
+	public boolean updatePizza(Pizza pizza) {
 		EntityManager em = getEmf().createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
@@ -65,7 +71,7 @@ public class PizzaDaoJpa implements PizzaDaoFactory {
 	}
 
 	@Override
-	public boolean deletePizza(Pizza pizza) throws PizzaException {
+	public boolean deletePizza(Pizza pizza) {
 
 		EntityManager em = getEmf().createEntityManager();
 		EntityTransaction et = em.getTransaction();
@@ -82,7 +88,7 @@ public class PizzaDaoJpa implements PizzaDaoFactory {
 	}
 
 	@Override
-	public Pizza getPizzaByCode(Object code) throws PizzaException {
+	public Pizza getPizzaByCode(Object code) {
 		EntityManager em = getEmf().createEntityManager();
 		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findPizzaByCode", Pizza.class);
 		query.setParameter("code", code.toString());
@@ -92,7 +98,7 @@ public class PizzaDaoJpa implements PizzaDaoFactory {
 	}
 
 	@Override
-	public Pizza getPizzaByPizza(Pizza pizza) throws PizzaException {
+	public Pizza getPizzaByPizza(Pizza pizza) {
 		EntityManager em = getEmf().createEntityManager();
 		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findPizzaByCode", Pizza.class);
 		query.setParameter("code", pizza.getCode());

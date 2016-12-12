@@ -18,6 +18,12 @@ import java.util.logging.Logger;
 import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Classe PizzaDaoJdbcFactory
+ * 
+ * @author ETY11
+ *
+ */
 public class PizzaDaoFileFactory implements PizzaDaoFactory {
 
 	private String folderPath = "data/pizza/";

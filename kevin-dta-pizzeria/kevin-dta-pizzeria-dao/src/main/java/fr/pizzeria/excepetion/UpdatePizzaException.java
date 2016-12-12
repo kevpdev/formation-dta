@@ -1,5 +1,11 @@
 package fr.pizzeria.excepetion;
 
+/**
+ * Classe UpdatePizzaException
+ * 
+ * @author ETY11
+ *
+ */
 public class UpdatePizzaException extends PizzaException {
 
 	/**

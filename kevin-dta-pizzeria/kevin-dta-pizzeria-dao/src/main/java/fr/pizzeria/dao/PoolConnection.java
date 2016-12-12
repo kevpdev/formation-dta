@@ -5,6 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Classe PoolConnection
+ * 
+ * @author ETY11
+ *
+ */
 public class PoolConnection {
 
 	private Connection con;

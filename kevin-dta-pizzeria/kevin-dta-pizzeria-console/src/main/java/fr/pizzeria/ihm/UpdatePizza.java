@@ -8,6 +8,12 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
+/**
+ * Classe UpdatePizza
+ * 
+ * @author ETY11
+ *
+ */
 public class UpdatePizza extends Option {
 
 	public IhmUtil ihmUtil;

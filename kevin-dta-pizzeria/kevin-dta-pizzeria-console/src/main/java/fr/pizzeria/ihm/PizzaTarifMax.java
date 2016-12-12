@@ -6,6 +6,12 @@ import java.util.List;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
+/**
+ * Classe PizzaTarifMax
+ * 
+ * @author ETY11
+ *
+ */
 public class PizzaTarifMax extends Option {
 
 	public IhmUtil ihmUtil;

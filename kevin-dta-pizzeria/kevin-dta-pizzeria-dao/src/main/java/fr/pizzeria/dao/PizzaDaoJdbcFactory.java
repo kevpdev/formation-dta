@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.apache.commons.collections4.ListUtils;
 
@@ -248,6 +249,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 					}
 					con.commit();
 				} catch (SQLException e) {
+					Logger.getLogger(PizzaDaoJdbcFactory.class.getName()).info(e.getMessage());
 					try {
 						con.rollback();
 					} catch (SQLException e1) {
