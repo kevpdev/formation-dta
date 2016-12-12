@@ -115,5 +115,7 @@
 		<module>kevin-dta-pizzeria-console</module>
 		<module>kevin-dta-pizzeria-dao</module>
 		<module>kevin-dta-pizzeria-model</module>
+		
+		<module>kevin-dta-pizzeria-client</module>
 	</modules>
 </project>

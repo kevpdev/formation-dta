@@ -7,13 +7,18 @@ import java.util.logging.Logger;
 
 import fr.pizzeria.tool.IhmUtil;
 
+/**
+ * Classe Menu
+ * 
+ * @author ETY11
+ *
+ */
 public class Menu {
 
 	public String titre;
 	public IhmUtil ihmUtil;
-	// public Option [] options = new Option[5];
 	public Map<Integer, Option> options = new HashMap<>();
-	private Logger LOGGER = Logger.getLogger(DeletePizza.class.getName());
+	private Logger LOGGER = Logger.getLogger(Menu.class.getName());
 
 	public Menu() {
 		super();
@@ -29,7 +34,7 @@ public class Menu {
 		this.options.put(4, new ListPizzaByCatag(ihmUtil));
 		this.options.put(5, new PizzaTarifMax(ihmUtil));
 		this.options.put(6, new ImportPizza(ihmUtil));
-		this.options.put(7, new ExistMenu());
+		this.options.put(7, new ExitMenu());
 
 		this.ihmUtil = ihmUtil;
 	}

@@ -1,5 +1,11 @@
 package fr.pizzeria.ihm;
 
+/**
+ * Classe Option
+ * 
+ * @author ETY11
+ *
+ */
 public abstract class Option {
 
 	public String libelle;

@@ -1,6 +1,6 @@
 package fr.pizzeria.ihm;
 
-public class ExistMenu extends Option {
+public class ExitMenu extends Option {
 	/**
 	 * 
 	 * Constructeur de la classe
@@ -8,7 +8,7 @@ public class ExistMenu extends Option {
 	 * @date 12 déc. 2016
 	 * @author ETY11
 	 */
-	public ExistMenu() {
+	public ExitMenu() {
 		this.setLibelle("99. Quittez l'application");
 	}
 

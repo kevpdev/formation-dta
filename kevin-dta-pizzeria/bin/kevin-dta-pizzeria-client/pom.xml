@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>dta.pizzeria</groupId>
+  <artifactId>kevin-dta-pizzeria-client</artifactId>
+  <version>1</version>
+  <packaging>jar</packaging>
+
+  <name>kevin-dta-pizzeria-client</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+   		<dependency>
+			<groupId>dta.pizzeria</groupId>
+			<artifactId>kevin-dta-pizzeria-model</artifactId>
+			<version>1</version>
+		</dependency>
+		<dependency>
+			<groupId>dta.pizzeria</groupId>
+			<artifactId>kevin-dta-pizzeria-dao</artifactId>
+			<version>1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.1</version>
+		</dependency>
+  </dependencies>
+  <parent>
+		<groupId>dta.pizzeria</groupId>
+		<artifactId>kevin-dta-pizzeria</artifactId>
+		<version>1</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+</project>

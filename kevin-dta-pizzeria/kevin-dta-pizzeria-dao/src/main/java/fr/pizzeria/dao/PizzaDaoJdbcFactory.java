@@ -14,7 +14,13 @@ import fr.pizzeria.excepetion.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
+/**
+ * Classe PizzaDaoJdbcFactory
+ * 
+ * @author ETY11
+ *
+ */
+public class PizzaDaoJdbcFactory implements PizzaDao {
 
 	private PoolConnection pc;
 

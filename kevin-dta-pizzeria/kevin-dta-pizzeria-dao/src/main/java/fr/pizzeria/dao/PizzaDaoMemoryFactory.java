@@ -10,7 +10,13 @@ import fr.pizzeria.excepetion.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
+/**
+ * Classe PizzaDaoMemoryFactory
+ * 
+ * @author ETY11
+ *
+ */
+public class PizzaDaoMemoryFactory implements PizzaDao {
 
 	protected static final List<Pizza> pizzas = new ArrayList<>();
 	public static final String filename = "pizzas.txt";

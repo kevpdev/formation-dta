@@ -3,6 +3,12 @@ package fr.pizzeria.ihm;
 import fr.pizzeria.model.TypeTriPizza;
 import fr.pizzeria.tool.IhmUtil;
 
+/**
+ * Classe ImportPizza
+ * 
+ * @author ETY11
+ *
+ */
 public class ImportPizza extends Option {
 
 	public IhmUtil ihmUtil;

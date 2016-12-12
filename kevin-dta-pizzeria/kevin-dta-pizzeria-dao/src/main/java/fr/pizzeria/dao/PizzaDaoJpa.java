@@ -18,7 +18,7 @@ import fr.pizzeria.model.Pizza;
  * @author ETY11
  *
  */
-public class PizzaDaoJpa implements PizzaDaoFactory {
+public class PizzaDaoJpa implements PizzaDao {
 
 	private EntityManagerFactory emf;
 

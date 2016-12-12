@@ -6,6 +6,12 @@ import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.TypeTriPizza;
 import fr.pizzeria.tool.IhmUtil;
 
+/**
+ * Classe ListPizza
+ * 
+ * @author ETY11
+ *
+ */
 public class ListPizza extends Option {
 
 	public IhmUtil ihmUtil;

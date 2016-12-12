@@ -11,7 +11,7 @@ import fr.pizzeria.model.Pizza;
  * @author ETY11
  *
  */
-public interface PizzaDaoFactory {
+public interface PizzaDao {
 
 	/**
 	 * 

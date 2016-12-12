@@ -3,6 +3,12 @@ package fr.pizzeria.ihm;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
+/**
+ * Classe DeletePizza
+ * 
+ * @author ETY11
+ *
+ */
 public class DeletePizza extends Option {
 
 	public IhmUtil ihmUtil;

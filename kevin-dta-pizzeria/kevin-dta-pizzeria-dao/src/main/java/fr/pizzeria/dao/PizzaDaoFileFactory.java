@@ -24,7 +24,7 @@ import fr.pizzeria.model.Pizza;
  * @author ETY11
  *
  */
-public class PizzaDaoFileFactory implements PizzaDaoFactory {
+public class PizzaDaoFileFactory implements PizzaDao {
 
 	private String folderPath = "data/pizza/";
 	private Properties prop;

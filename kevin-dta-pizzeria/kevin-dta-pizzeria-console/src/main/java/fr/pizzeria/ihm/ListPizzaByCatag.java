@@ -8,6 +8,12 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
+/**
+ * Classe ListPizzaByCatag
+ * 
+ * @author ETY11
+ *
+ */
 public class ListPizzaByCatag extends Option {
 
 	public IhmUtil ihmUtil;
