@@ -25,7 +25,7 @@ public class Ecran {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String daoImpl = bundle.getString("dao.impl");
 		PizzaDaoFactory daofactory = (PizzaDaoFactory) Class.forName(daoImpl).newInstance();
-		// Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+
 		Scanner sc = new Scanner(System.in).useLocale(Locale.US);
 
 		IhmUtil ihmUtil;

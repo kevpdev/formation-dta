@@ -12,9 +12,17 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 
-	public List<Pizza> pizzas = new ArrayList<>();
-	public String filename = "pizzas.txt";
+	public static final List<Pizza> pizzas = new ArrayList<>();
+	public static final String filename = "pizzas.txt";
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @throws FileNotFoundException
+	 */
 	public PizzaDaoMemoryFactory() throws FileNotFoundException {
 
 		// TODO Auto-generated constructor stub
@@ -46,6 +54,11 @@ public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 
 	}
 
+	/**
+	 * 
+	 * @param pizza
+	 * @return boolean
+	 */
 	private boolean isValid(Pizza pizza) {
 
 		return pizza != null && pizza.getCode() != null;
@@ -83,7 +96,7 @@ public class PizzaDaoMemoryFactory implements PizzaDaoFactory {
 		int i = 0;
 		boolean stop = false;
 		while (i < pizzas.size() && !stop) {
-			if ((pizza.getCode().equals(pizzas.get(i).getCode()))) {
+			if (pizza.getCode().equals(pizzas.get(i).getCode())) {
 				stop = true;
 			}
 			if (!stop) {

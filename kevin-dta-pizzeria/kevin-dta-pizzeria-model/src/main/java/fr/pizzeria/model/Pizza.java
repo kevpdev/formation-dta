@@ -41,10 +41,27 @@ public class Pizza {
 	@Transient
 	public static int nbPizzas;
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 */
 	public Pizza() {
 
 	}
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 */
 	public Pizza(String code, String nom, Double prix) {
 		super();
 
@@ -55,12 +72,34 @@ public class Pizza {
 		nbPizzas++;
 	}
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param categ
+	 */
 	public Pizza(String code, String nom, Double prix, CategoriePizza categ) {
 		this(code, nom, prix);
 		nbPizzas++;
 		this.setCategPizza(categ);
 	}
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param id
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 */
 	public Pizza(Integer id, String code, String nom, Double prix) {
 		this(code, nom, prix);
 		nbPizzas++;
@@ -68,6 +107,18 @@ public class Pizza {
 
 	}
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param id
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param categ
+	 */
 	public Pizza(Integer id, String code, String nom, Double prix, CategoriePizza categ) {
 		this(id, code, nom, prix);
 
@@ -76,10 +127,18 @@ public class Pizza {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * 
+	 * @param id
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}

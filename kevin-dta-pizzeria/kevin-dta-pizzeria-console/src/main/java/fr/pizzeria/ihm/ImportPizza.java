@@ -8,6 +8,14 @@ public class ImportPizza extends Option {
 	public IhmUtil ihmUtil;
 	public TypeTriPizza ttp;
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param ihmUtil
+	 */
 	public ImportPizza(IhmUtil ihmUtil) {
 		this.setLibelle("7. Importer les données (base de données)");
 		this.ihmUtil = ihmUtil;

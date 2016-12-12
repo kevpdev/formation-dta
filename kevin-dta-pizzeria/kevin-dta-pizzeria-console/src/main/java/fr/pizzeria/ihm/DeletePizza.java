@@ -1,15 +1,20 @@
 package fr.pizzeria.ihm;
 
-import java.util.logging.Logger;
-
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
 public class DeletePizza extends Option {
 
 	public IhmUtil ihmUtil;
-	private Logger LOGGER = Logger.getLogger(DeletePizza.class.getName());
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param ihmUtil
+	 */
 	public DeletePizza(IhmUtil ihmUtil) {
 
 		this.setLibelle("4. Suppression d'une pizza");

@@ -14,6 +14,14 @@ public enum CategoriePizza {
 		this.setNomCateg(nomCateg);
 	}
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param nomCateg
+	 */
 	CategoriePizza(String nomCateg) {
 		this.nomCateg = nomCateg;
 	}

@@ -11,6 +11,14 @@ public class ListPizza extends Option {
 	public IhmUtil ihmUtil;
 	public TypeTriPizza ttp;
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param ihmUtil
+	 */
 	public ListPizza(IhmUtil ihmUtil) {
 		this.setLibelle("1. Liste des pizza");
 		this.ihmUtil = ihmUtil;

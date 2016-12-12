@@ -9,10 +9,23 @@ public class PoolConnection {
 
 	private Connection con;
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 */
 	public PoolConnection() {
-
+		super();
 	}
 
+	/**
+	 * 
+	 * @return Connection
+	 * @throws SQLException
+	 *             Connection
+	 */
 	public Connection getConnection() throws SQLException {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("jdbc");

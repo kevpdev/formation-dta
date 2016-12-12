@@ -12,6 +12,14 @@ public class UpdatePizza extends Option {
 
 	public IhmUtil ihmUtil;
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param ihmUtil
+	 */
 	public UpdatePizza(IhmUtil ihmUtil) {
 
 		this.setLibelle("3. Mise � jour d'une pizza");

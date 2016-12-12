@@ -19,12 +19,13 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 
 	/**
 	 * 
-	 * Constructeur de la classe 9 déc. 2016
+	 * Constructeur de la classe
 	 * 
+	 * @date 12 déc. 2016
 	 * @author ETY11
 	 */
 	public PizzaDaoJdbcFactory() {
-
+		super();
 	}
 
 	/**
@@ -194,6 +195,9 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 		T exec(Connection conn) throws SQLException;
 	}
 
+	/*
+	 * 
+	 */
 	public <T> T execute(IRunSql<T> run) {
 		try (Connection con = getPc().getConnection(); Statement stat = con.createStatement()) {
 
@@ -204,6 +208,11 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 
 	}
 
+	/**
+	 * 
+	 * @param run
+	 * @return
+	 */
 	public <T> T executePrep(IRunSqlPrep<T> run) {
 		try (Connection con = getPc().getConnection()) {
 
@@ -214,20 +223,21 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 
 	}
 
+	/**
+	 * 
+	 */
+	@Override
 	public boolean importPizza() {
 		List<Pizza> pizzasFile = new PizzaDaoFileFactory().findAllPizzas();
 
 		List<List<Pizza>> superListPizzas = ListUtils.partition(pizzasFile, 3);
 
-		return executePrep((con) -> {
-
+		return executePrep(con -> {
 			con.setAutoCommit(false);
 			java.sql.PreparedStatement update = con
 					.prepareStatement("INSERT INTO pizza (libelle, reference, prix, categ_pizza) value(?, ?, ?, ?)");
 			for (List<Pizza> pizzas : superListPizzas) {
-
 				try {
-
 					for (Pizza pizza : pizzas) {
 
 						update.setString(1, pizza.getNom());
@@ -236,9 +246,7 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 						update.setString(4, pizza.getCategPizza().toString());
 						update.executeUpdate();
 					}
-
 					con.commit();
-
 				} catch (SQLException e) {
 					try {
 						con.rollback();
@@ -246,13 +254,9 @@ public class PizzaDaoJdbcFactory implements PizzaDaoFactory {
 
 						throw new PizzaException(e1);
 					}
-
 				}
-
 			}
-
 			return true;
-
 		});
 	}
 

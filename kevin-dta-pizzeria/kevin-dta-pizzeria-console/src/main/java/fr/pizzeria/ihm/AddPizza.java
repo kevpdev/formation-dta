@@ -12,6 +12,14 @@ public class AddPizza extends Option {
 
 	public IhmUtil ihmUtil;
 
+	/**
+	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param ihmUtil
+	 */
 	public AddPizza(IhmUtil ihmUtil) {
 		this.setLibelle("2. Ajouter une pizza");
 		this.ihmUtil = ihmUtil;

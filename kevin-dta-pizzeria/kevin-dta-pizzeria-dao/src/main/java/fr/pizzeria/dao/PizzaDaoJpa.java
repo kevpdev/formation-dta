@@ -1,6 +1,8 @@
 package fr.pizzeria.dao;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,7 +18,7 @@ public class PizzaDaoJpa implements PizzaDaoFactory {
 	private EntityManagerFactory emf;
 
 	public PizzaDaoJpa() {
-
+		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		setEmf(Persistence.createEntityManagerFactory("kevin-dta-pizzeria-console"));
 
 	}
