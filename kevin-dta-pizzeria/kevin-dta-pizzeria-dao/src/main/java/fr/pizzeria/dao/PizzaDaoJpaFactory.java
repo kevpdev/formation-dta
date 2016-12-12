@@ -18,11 +18,11 @@ import fr.pizzeria.model.Pizza;
  * @author ETY11
  *
  */
-public class PizzaDaoJpa implements PizzaDao {
+public class PizzaDaoJpaFactory implements PizzaDao {
 
 	private EntityManagerFactory emf;
 
-	public PizzaDaoJpa() {
+	public PizzaDaoJpaFactory() {
 		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		setEmf(Persistence.createEntityManagerFactory("kevin-dta-pizzeria-console"));
 

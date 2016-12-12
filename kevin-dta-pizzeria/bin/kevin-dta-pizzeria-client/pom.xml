@@ -1,21 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>dta.pizzeria</groupId>
-  <artifactId>kevin-dta-pizzeria-client</artifactId>
-  <version>1</version>
-  <packaging>jar</packaging>
+	<groupId>dta.pizzeria</groupId>
+	<artifactId>kevin-dta-pizzeria-client</artifactId>
+	<version>1</version>
+	<packaging>jar</packaging>
 
-  <name>kevin-dta-pizzeria-client</name>
-  <url>http://maven.apache.org</url>
+	<name>kevin-dta-pizzeria-client</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-  <dependencies>
-   		<dependency>
+	<dependencies>
+		<dependency>
 			<groupId>dta.pizzeria</groupId>
 			<artifactId>kevin-dta-pizzeria-model</artifactId>
 			<version>1</version>
@@ -23,6 +23,11 @@
 		<dependency>
 			<groupId>dta.pizzeria</groupId>
 			<artifactId>kevin-dta-pizzeria-dao</artifactId>
+			<version>1</version>
+		</dependency>
+		<dependency>
+			<groupId>dta.pizzeria</groupId>
+			<artifactId>kevin-dta-pizzeria-console</artifactId>
 			<version>1</version>
 		</dependency>
 		<dependency>
@@ -53,7 +58,55 @@
 			<version>4.1</version>
 		</dependency>
   </dependencies>
-  <parent>
+	<profiles>
+		<profile>
+			<id>base</id>
+			<properties>
+				<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
+				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
+				<jdbc.mysql.user>root</jdbc.mysql.user>
+				<jdbc.mysql.pwd></jdbc.mysql.pwd>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<pizza.dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</pizza.dao.impl>
+				<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
+				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
+				<jdbc.mysql.user>root</jdbc.mysql.user>
+				<jdbc.mysql.pwd></jdbc.mysql.pwd>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev2</id>
+			<properties>
+				<pizza.dao.impl>fr.pizzeria.dao.PizzaDaoFileFactory</pizza.dao.impl>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev3</id>
+			<properties>
+				<pizza.dao.impl>fr.pizzeria.dao.PizzaDaoJpaFactory</pizza.dao.impl>
+				<client.dao.impl>fr.pizzeria.dao.ClientDaoJpaFactory</client.dao.impl>
+				<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria2</jdbc.mysql.url>
+				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
+				<jdbc.mysql.user>root</jdbc.mysql.user>
+				<jdbc.mysql.pwd></jdbc.mysql.pwd>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<pizza.dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</pizza.dao.impl>
+				<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
+				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
+				<jdbc.mysql.user>root</jdbc.mysql.user>
+				<jdbc.mysql.pwd></jdbc.mysql.pwd>
+			</properties>
+		</profile>
+	</profiles>
+	<parent>
 		<groupId>dta.pizzeria</groupId>
 		<artifactId>kevin-dta-pizzeria</artifactId>
 		<version>1</version>

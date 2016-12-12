@@ -7,10 +7,13 @@ import fr.pizzeria.ihm.Option;
 import fr.pizzeria.tool.IhmUtil;
 
 /**
+ * Classe ListerCommande
+ * 
  * @author ETY11
  * @since 12 déc. 2016
  */
-public class Inscription extends Option {
+public class ListerCommande extends Option {
+
 	private IhmUtil ihmUtil;
 
 	/**
@@ -19,10 +22,8 @@ public class Inscription extends Option {
 	 * @date 12 déc. 2016
 	 * @author ETY11
 	 */
-	public Inscription(IhmUtil ihmUtil) {
-		super();
+	public ListerCommande(IhmUtil ihmUtil) {
 		this.ihmUtil = ihmUtil;
-		this.setLibelle("1. S'inscrire");
 	}
 
 	@Override
