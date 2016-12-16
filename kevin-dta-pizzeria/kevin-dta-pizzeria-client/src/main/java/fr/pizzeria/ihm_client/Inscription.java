@@ -4,6 +4,7 @@
 package fr.pizzeria.ihm_client;
 
 import fr.pizzeria.ihm.Option;
+import fr.pizzeria.model.Client;
 import fr.pizzeria.tool.IhmUtil;
 
 /**
@@ -28,11 +29,32 @@ public class Inscription extends Option {
 	@Override
 	public void executeOption() {
 
+		System.out.print("nom : ");
+		String nom = ihmUtil.getScanner().nextLine();
+		System.out.print("Prenom : ");
+		String prenom = ihmUtil.getScanner().nextLine();
+		System.out.print("email : ");
+		String email = ihmUtil.getScanner().nextLine();
+		System.out.print("Mot de passe : ");
+		String motDePasse = ihmUtil.getScanner().nextLine();
+		System.out.print("adresse : ");
+		String adresse = ihmUtil.getScanner().nextLine();
+		System.out.print("ville : ");
+		String ville = ihmUtil.getScanner().nextLine();
+		System.out.print("code postale : ");
+		String codePostal = ihmUtil.getScanner().nextLine();
+		System.out.print("telephone : ");
+		String telephone = ihmUtil.getScanner().nextLine();
+
+		System.out.println(ihmUtil.getClientdao().addClient(
+				new Client(nom.toUpperCase(), prenom, email, motDePasse, adresse, ville, codePostal, telephone))
+						? "Inscription reussi !!!!" : "echec !!!!");
+
 	}
 
 	@Override
 	public void libelleOption() {
-
+		System.out.println(getLibelle());
 	}
 
 }

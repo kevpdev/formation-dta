@@ -16,4 +16,5 @@ public interface ClientDao {
 
 	<T> Client getClientById(T id);
 
+	Client login(String email, String motDePasse);
 }

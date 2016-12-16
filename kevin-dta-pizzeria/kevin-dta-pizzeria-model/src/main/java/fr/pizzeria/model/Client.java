@@ -5,6 +5,8 @@ package fr.pizzeria.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Classe Client
@@ -13,6 +15,8 @@ import javax.persistence.Entity;
  * @since 12 déc. 2016
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = "client.findAll", query = "SELECT c FROM Client c"),
+		@NamedQuery(name = "client.login", query = "SELECT c FROM Client c WHERE c.email = :email AND c.motDePasse = :motDePasse") })
 public class Client extends Personne {
 	@Column(name = "mot_de_passe", length = 255, nullable = false)
 	private String motDePasse;
@@ -23,7 +27,7 @@ public class Client extends Personne {
 	@Column(name = "code_postal", length = 6, nullable = false)
 	private String codePostal;
 	@Column(name = "telephone", length = 15, nullable = true)
-	private String telepone;
+	private String telephone;
 
 	/**
 	 * Constructeur de la classe
@@ -36,14 +40,15 @@ public class Client extends Personne {
 	 * @param codePostal
 	 * @param telepone
 	 */
-	public Client(int id, String nom, String prenom, String email, String motDePasse, String adresse, String ville,
-			String codePostal, String telepone) {
-		super(id, nom, prenom, email);
-		this.motDePasse = motDePasse;
+	public Client(String nom, String prenom, String email, String motDePasse, String adresse, String ville,
+			String codePostal, String telephone) {
+		super(nom, prenom, email);
+
 		this.adresse = adresse;
 		this.ville = ville;
 		this.codePostal = codePostal;
-		this.telepone = telepone;
+		this.telephone = telephone;
+		this.motDePasse = motDePasse;
 	}
 
 	/**
@@ -123,22 +128,22 @@ public class Client extends Personne {
 	}
 
 	/**
-	 * getter telepone
+	 * getter telephone
 	 * 
-	 * @return the telepone
+	 * @return the telephone
 	 */
-	public String getTelepone() {
-		return telepone;
+	public String getTelephone() {
+		return telephone;
 	}
 
 	/**
-	 * setter telepone
+	 * setter telephone
 	 * 
-	 * @param telepone
-	 *            the telepone to set
+	 * @param telephone
+	 *            the telephone to set
 	 */
-	public void setTelepone(String telepone) {
-		this.telepone = telepone;
+	public void setTelephone(String telepone) {
+		this.telephone = telepone;
 	}
 
 }

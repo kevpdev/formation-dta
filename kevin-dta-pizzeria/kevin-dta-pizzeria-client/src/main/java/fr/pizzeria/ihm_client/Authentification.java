@@ -27,13 +27,19 @@ public class Authentification extends Option {
 
 	@Override
 	public void executeOption() {
-		// TODO Auto-generated method stub
+		System.out.print("email : ");
+		String email = ihmUtil.getScanner().nextLine();
+		System.out.print("mode de passe : ");
+		String motDePasse = ihmUtil.getScanner().nextLine();
+
+		System.out.println(ihmUtil.getClientdao().login(email, motDePasse) == null ? "authentification reussi !!!!"
+				: "echec !!!!");
 
 	}
 
 	@Override
 	public void libelleOption() {
-		// TODO Auto-generated method stub
+		System.out.println(getLibelle());
 
 	}
 

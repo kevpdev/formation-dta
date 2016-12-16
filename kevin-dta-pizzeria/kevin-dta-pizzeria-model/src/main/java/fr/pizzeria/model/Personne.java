@@ -45,17 +45,30 @@ public abstract class Personne {
 	 * 
 	 * @date 12 déc. 2016
 	 * @author ETY11
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 */
+	public Personne(String nom, String prenom, String email) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+	}
+
+	/**
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
 	 * @param id
 	 * @param nom
 	 * @param prenom
 	 * @param email
 	 */
 	public Personne(int id, String nom, String prenom, String email) {
-		super();
+		this(nom, prenom, email);
 		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
 	}
 
 	/**
