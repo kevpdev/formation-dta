@@ -32,6 +32,16 @@ public class Client extends Personne {
 	/**
 	 * Constructeur de la classe
 	 * 
+	 * @date 20 déc. 2016
+	 * @author ETY11
+	 */
+	public Client() {
+		super();
+	}
+
+	/**
+	 * Constructeur de la classe
+	 * 
 	 * @date 12 déc. 2016
 	 * @author ETY11
 	 * @param motDePasse

@@ -66,7 +66,7 @@ public class AccueilClient {
 
 		} while (notInteger);
 
-		if (action < 2) {
+		if (action < 3) {
 
 			this.options.get(action - 1).executeOption();
 

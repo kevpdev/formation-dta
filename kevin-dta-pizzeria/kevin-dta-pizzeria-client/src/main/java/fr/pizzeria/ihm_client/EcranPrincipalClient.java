@@ -37,7 +37,7 @@ public class EcranPrincipalClient {
 
 			IhmUtil ihmUtil;
 			ihmUtil = new IhmUtil(sc, pizzaDaofactory, clientDaofactory);
-			AccueilClient menu = new AccueilClient("***** Pizzeria Administration *****", ihmUtil);
+			AccueilClient menu = new AccueilClient("***** Pizzeria Accueil *****", ihmUtil);
 			menu.start();
 
 			sc.close();

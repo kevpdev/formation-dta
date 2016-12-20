@@ -24,6 +24,7 @@ public class CommanderPizza extends Option {
 	 */
 	public CommanderPizza(IhmUtil ihmUtil) {
 		this.ihmUtil = ihmUtil;
+		this.setLibelle("1. Commander une pizza");
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class CommanderPizza extends Option {
 
 	@Override
 	public void libelleOption() {
-
+		System.out.println(this.getLibelle());
 	}
 
 }

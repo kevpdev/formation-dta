@@ -24,6 +24,7 @@ public class ListerCommande extends Option {
 	 */
 	public ListerCommande(IhmUtil ihmUtil) {
 		this.ihmUtil = ihmUtil;
+		this.setLibelle("2. Lister les pizzas");
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class ListerCommande extends Option {
 
 	@Override
 	public void libelleOption() {
-
+		System.out.println(this.getLibelle());
 	}
 
 }
