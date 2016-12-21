@@ -21,7 +21,7 @@
 	</div>
 	<div class="container">
 		<a href='<c:url value="/pizzas/new"/>' class="btn btn-success">Ajouter</a>
-		<table class="table">
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Code</th>
@@ -40,7 +40,7 @@
 						<td>${pizza.code}</td>
 						<td>${pizza.nom}</td>
 						<td>${pizza.prix}€</td>
-						<td>${pizza.categPizza}</td>
+						<td>${pizza.categPizza.nomCateg}</td>
 						<td><img src="<c:url value="/images/pizzas/${pizza.url}"/>"
 							width="70" /></td>
 						<td><a

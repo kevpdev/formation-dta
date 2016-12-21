@@ -29,7 +29,7 @@
 					<label class="col-md-4 control-label" for="login">Nom d'utilisateur</label>
 					<div class="col-md-4">
 						<input id="code" name="login" type="text" placeholder="Nom d'utilisateur"
-							class="form-control input-md" required="" value="">
+							class="form-control input-md" required="" value="admin">
 
 					</div>
 				</div>
@@ -39,7 +39,7 @@
 					<label class="col-md-4 control-label" for="motdepasse">Mot de passe</label>
 					<div class="col-md-4">
 						<input id="nom" name="motdepasse" type="password" placeholder="Mot de passe"
-							class="form-control input-md" required="" value="">
+							class="form-control input-md" required="" value="admin@pizzeria">
 
 					</div>
 				</div>

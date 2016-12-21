@@ -48,7 +48,7 @@ public class LoginController extends HttpServlet {
 		if ("admin".equals(login) && "admin@pizzeria".equals(mdp)) {
 
 			HttpSession session = request.getSession();
-			session.setMaxInactiveInterval(10);
+			session.setMaxInactiveInterval(10 * 60);
 			session.setAttribute("utilisateur", login);
 
 			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/pizzas/list");
