@@ -1,7 +1,6 @@
 package fr.pizzeria.admin.web;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,19 +14,19 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
- * Servlet implementation class EditerPizzaController
+ * Servlet implementation class AjouterPizzaController
  */
-@WebServlet("/pizzas/edit")
-public class EditerPizzaController extends HttpServlet {
+@WebServlet("/pizzas/new")
+public class AjouterPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final PizzaDaoJpaFactory pizzaDao = new PizzaDaoJpaFactory();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EditerPizzaController() {
+	public AjouterPizzaController() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
@@ -36,15 +35,9 @@ public class EditerPizzaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String code = request.getParameter("code");
-		Pizza pizza = pizzaDao.getPizzaByCode(code);
-		Logger.getLogger(EditerPizzaController.class.getName()).info("pizza : " + pizza);
 
-		if (pizza != null) {
-			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/editerPizza.jsp");
-			request.setAttribute("pizza", pizza);
-			dispatcher.forward(request, response);
-		}
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/ajouterPizza.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -53,34 +46,21 @@ public class EditerPizzaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String code = request.getParameter("code");
 		String nom = request.getParameter("nom");
 		String prix = request.getParameter("prix");
 		String categ = request.getParameter("categ_pizza");
 		String url = request.getParameter("url_image");
-		Pizza pizza = pizzaDao.getPizzaByCode(code);
-		Logger.getLogger(EditerPizzaController.class.getName()).info("pizza : " + pizza);
 
-		if (pizza != null) {
+		Pizza pizza = new Pizza();
+		pizza.setCode(code);
+		pizza.setNom(nom);
+		pizza.setPrix(Double.parseDouble(prix));
+		pizza.setCategPizza(CategoriePizza.valueOf(categ));
+		pizza.setUrl(url);
+		pizzaDao.addPizza(pizza);
 
-			pizza.setCode(code);
-			pizza.setNom(nom);
-			pizza.setPrix(Double.parseDouble(prix));
-			pizza.setCategPizza(CategoriePizza.valueOf(categ));
-			pizza.setUrl(url);
-			pizzaDao.updatePizza(pizza);
-
-			response.sendRedirect(request.getContextPath() + "/pizzas/list");
-		} else {
-			response.sendRedirect("/pizzas/error");
-		}
-
-	}
-
-	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 
 	}
 

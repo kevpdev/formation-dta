@@ -38,8 +38,12 @@ public class Pizza {
 	@Column(name = "categ_pizza")
 	@ToString
 	private CategoriePizza categPizza;
+	@Column(name = "url_image")
+	private String url;
 	@Transient
 	public static int nbPizzas;
+	@Column(name = "dispo")
+	private boolean disponibilite;
 
 	/**
 	 * 
@@ -129,6 +133,26 @@ public class Pizza {
 
 	/**
 	 * 
+	 * Constructeur de la classe
+	 * 
+	 * @date 12 déc. 2016
+	 * @author ETY11
+	 * @param id
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param categ
+	 */
+	public Pizza(Integer id, String code, String nom, Double prix, CategoriePizza categ, String url) {
+		this(id, code, nom, prix, categ);
+
+		nbPizzas++;
+		this.getUrl();
+
+	}
+
+	/**
+	 * 
 	 * @return
 	 */
 	public Integer getId() {
@@ -183,6 +207,25 @@ public class Pizza {
 		this.categPizza = categPizza;
 	}
 
+	/**
+	 * getter url
+	 * 
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * setter url
+	 * 
+	 * @param url
+	 *            the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public String toString() {
 		return code + "-> " + nom + " (" + prix + "�) Categorie : " + categPizza;
@@ -217,6 +260,25 @@ public class Pizza {
 		return new EqualsBuilder().appendSuper(super.equals(obj)).append(id, pizza.id).append(code, pizza.code)
 				.append(nom, pizza.nom).append(prix, pizza.prix).append(categPizza, pizza.categPizza).isEquals();
 
+	}
+
+	/**
+	 * getter disponibilite
+	 * 
+	 * @return the disponibilite
+	 */
+	public boolean isDisponibilite() {
+		return disponibilite;
+	}
+
+	/**
+	 * setter disponibilite
+	 * 
+	 * @param disponibilite
+	 *            the disponibilite to set
+	 */
+	public void setDisponibilite(boolean disponibilite) {
+		this.disponibilite = disponibilite;
 	}
 
 }
