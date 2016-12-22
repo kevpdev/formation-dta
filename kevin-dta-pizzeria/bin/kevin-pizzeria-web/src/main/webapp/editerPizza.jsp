@@ -18,7 +18,7 @@
 	</div>
 	<div class="container">
 		<form class="form-horizontal" method="post"
-			action="<<c:url value="/pizzas/edit"/>">
+			action="<c:url value="/pizzas/edit"/>">
 			<fieldset>
 
 				<!-- Form Name -->
