@@ -1,26 +1,31 @@
 package fr.pizzeria.admin.web;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
-import javax.servlet.RequestDispatcher;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import fr.pizzeria.admin.service.PizzaService;
+import fr.pizzeria.model.Pizza;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class SuppPizzaController
  */
-@WebServlet("/login")
-public class LoginController extends HttpServlet {
+@WebServlet("/pizzas/delete")
+public class SuppPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@Inject
+	private PizzaService servicePizza;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginController() {
+	public SuppPizzaController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -31,9 +36,7 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/authentification.jsp");
-		dispatcher.forward(request, response);
-
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -42,19 +45,17 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String code = request.getParameter("code");
+		Pizza pizza = servicePizza.getPizzaByCode(code);
+		Logger.getLogger(EditerPizzaController.class.getName()).info("pizza : " + pizza);
 
-		String login = request.getParameter("login");
-		String mdp = request.getParameter("motdepasse");
-		if ("admin".equals(login) && "admin@pizzeria".equals(mdp)) {
-
-			HttpSession session = request.getSession();
-			session.setMaxInactiveInterval(10 * 60);
-			session.setAttribute("utilisateur", login);
+		if (pizza != null) {
+			// pizzaDao.updatePizza(pizza);
 
 			response.sendRedirect(request.getContextPath() + "/pizzas/list");
-
+		} else {
+			response.sendRedirect("/pizzas/error");
 		}
-
 	}
 
 }

@@ -3,6 +3,7 @@ package fr.pizzeria.admin.web;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.dao.PizzaDaoJpaFactory;
+import fr.pizzeria.admin.service.PizzaService;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -20,7 +21,8 @@ import fr.pizzeria.model.Pizza;
 @WebServlet("/pizzas/edit")
 public class EditerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final PizzaDaoJpaFactory pizzaDao = new PizzaDaoJpaFactory();
+	@Inject
+	private PizzaService servicePizza;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -37,7 +39,7 @@ public class EditerPizzaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
-		Pizza pizza = pizzaDao.getPizzaByCode(code);
+		Pizza pizza = servicePizza.getPizzaByCode(code);
 		Logger.getLogger(EditerPizzaController.class.getName()).info("pizza : " + pizza);
 
 		if (pizza != null) {
@@ -59,7 +61,7 @@ public class EditerPizzaController extends HttpServlet {
 		String prix = request.getParameter("prix");
 		String categ = request.getParameter("categ_pizza");
 		String url = request.getParameter("url_image");
-		Pizza pizza = pizzaDao.getPizzaByCode(code);
+		Pizza pizza = servicePizza.getPizzaByCode(code);
 		Logger.getLogger(EditerPizzaController.class.getName()).info("pizza : " + pizza);
 
 		if (pizza != null) {
@@ -69,7 +71,7 @@ public class EditerPizzaController extends HttpServlet {
 			pizza.setPrix(Double.parseDouble(prix));
 			pizza.setCategPizza(CategoriePizza.valueOf(categ));
 			pizza.setUrl(url);
-			pizzaDao.updatePizza(pizza);
+			servicePizza.updatePizza(pizza);
 
 			response.sendRedirect(request.getContextPath() + "/pizzas/list");
 		} else {

@@ -1,67 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="fr.pizzeria.model.Pizza"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
-<meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
-<script
-	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
-<%
-	Pizza pizza = (Pizza) request.getAttribute("pizza");
-%>
-<title>Pizzeria - Modifier la pizza <%=pizza.getNom()%></title>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:import url="/entete.jsp"></c:import>
+<c:set var="pizza" scope="page" value="${pizza}"></c:set>
+<title>Pizzeria - Modifier la pizza ${pizza.nom}</title>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Pizzeria la Florentina</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a
-						href="<%=request.getContextPath()%>/pizzas/list">Accueil</a></li>
-					<li><a href="#about">La carte</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-	</nav>
+<c:import url="/nav_entete.jsp"></c:import>
 	<div class="jumbotron">
 		<div class="container">
-			<h2>
-				Modifier la pizza
-				<%=pizza.getNom()%></h2>
+			<h2>Modifier la pizza ${pizza.nom}</h2>
 		</div>
 	</div>
 	<div class="container">
-		<form class="form-horizontal" method="post" action="<%=request.getContextPath()%>/pizzas/edit">
+		<form class="form-horizontal" method="post"
+			action="<<c:url value="/pizzas/edit"/>">
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>
-					Modifier la pizza
-					<%=pizza.getNom()%></legend>
+				<legend> Modifier la pizza ${pizza.nom}</legend>
 
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="code">Code</label>
 					<div class="col-md-4">
 						<input id="code" name="code" type="text" placeholder="code"
-							class="form-control input-md" required=""
-							value="<%=pizza.getCode()%>">
+							class="form-control input-md" required="" value="${pizza.code}">
 
 					</div>
 				</div>
@@ -71,8 +39,7 @@
 					<label class="col-md-4 control-label" for="nom">Nom</label>
 					<div class="col-md-4">
 						<input id="nom" name="nom" type="text" placeholder="nom"
-							class="form-control input-md" required=""
-							value="<%=pizza.getNom()%>">
+							class="form-control input-md" required="" value="${pizza.nom}">
 
 					</div>
 				</div>
@@ -82,8 +49,7 @@
 					<label class="col-md-4 control-label" for="prix">Prix</label>
 					<div class="col-md-4">
 						<input id="prix" name="prix" type="text" placeholder="prix"
-							class="form-control input-md" required=""
-							value="<%=pizza.getPrix()%>">
+							class="form-control input-md" required="" value="${pizza.prix}">
 
 					</div>
 				</div>
@@ -94,13 +60,24 @@
 						de Pizza</label>
 					<div class="col-md-4">
 						<select id="categ_pizza" name="categ_pizza" class="form-control">
-							<option value="VIANDE"
-								<%=pizza.getCategPizza().toString() == "Viande" ? "selected='selected'" : ""%>>Viande</option>
-							<option value="SANS_VIANDE"
-								<%=pizza.getCategPizza().toString() == "Sans Viande" ? "selected='selected'" : ""%>>Sans
-								Viande</option>
-							<option value="POISSON"
-								<%=pizza.getCategPizza().toString() == "Poisson" ? "selected='selected'" : ""%>>Poisson</option>
+							<c:if test="${!empty pizza}">
+								<c:if test="${pizza.categPizza.nomCateg == 'Viande'}">
+									<option value="VIANDE" <c:out value="selected='selected'"/>>Viande</option>
+									<option value="SANS_VIANDE">Sans Viande</option>
+									<option value="POISSON">Poisson</option>
+								</c:if>
+								<c:if test="${pizza.categPizza.nomCateg == 'Sans Viande'}">
+									<option value="SANS_VIANDE"
+										<c:out value="selected='selected'"/>>Sans Viande</option>
+									<option value="VIANDE">Viande</option>
+									<option value="POISSON">Poisson</option>
+								</c:if>
+								<c:if test="${pizza.categPizza.nomCateg == 'Poisson'}">
+									<option value="POISSON" <c:out value="selected='selected'"/>>Poisson</option>
+									<option value="SANS_VIANDE">Sans Viande</option>
+									<option value="VIANDE">Viande</option>
+								</c:if>
+							</c:if>
 						</select>
 					</div>
 				</div>

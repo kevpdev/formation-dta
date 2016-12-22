@@ -24,7 +24,7 @@ public class PizzaDaoJpaFactory implements PizzaDao {
 
 	public PizzaDaoJpaFactory() {
 		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
-		setEmf(Persistence.createEntityManagerFactory("kevin-dta-pizzeria"));
+		setEmf(Persistence.createEntityManagerFactory("pizza-db"));
 
 	}
 
@@ -63,6 +63,7 @@ public class PizzaDaoJpaFactory implements PizzaDao {
 			pizzaUpdate.setNom(pizza.getNom());
 			pizzaUpdate.setPrix(pizza.getPrix());
 			pizzaUpdate.setCategPizza(pizza.getCategPizza());
+			em.merge(pizzaUpdate);
 			et.commit();
 			return true;
 		}

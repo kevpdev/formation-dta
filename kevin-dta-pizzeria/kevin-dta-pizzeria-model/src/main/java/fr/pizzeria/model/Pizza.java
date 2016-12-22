@@ -42,8 +42,8 @@ public class Pizza {
 	private String url;
 	@Transient
 	public static int nbPizzas;
-	@Column(name = "dispo")
-	private boolean disponibilite;
+	@Column(name = "archive")
+	private boolean archive;
 
 	/**
 	 * 
@@ -267,8 +267,8 @@ public class Pizza {
 	 * 
 	 * @return the disponibilite
 	 */
-	public boolean isDisponibilite() {
-		return disponibilite;
+	public boolean isArchive() {
+		return archive;
 	}
 
 	/**
@@ -277,8 +277,8 @@ public class Pizza {
 	 * @param disponibilite
 	 *            the disponibilite to set
 	 */
-	public void setDisponibilite(boolean disponibilite) {
-		this.disponibilite = disponibilite;
+	public void setArchive(boolean archive) {
+		this.archive = archive;
 	}
 
 }

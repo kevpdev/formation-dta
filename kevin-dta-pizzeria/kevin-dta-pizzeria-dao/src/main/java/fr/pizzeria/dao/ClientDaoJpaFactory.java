@@ -31,7 +31,7 @@ public class ClientDaoJpaFactory implements ClientDao {
 	 */
 	public ClientDaoJpaFactory() {
 		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
-		setEmf(Persistence.createEntityManagerFactory("kevin-dta-pizzeria-client"));
+		setEmf(Persistence.createEntityManagerFactory("pizza-db"));
 	}
 
 	@Override

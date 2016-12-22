@@ -3,33 +3,33 @@
 <%@ page import="java.util.List"%>
 <%@ page import="fr.pizzeria.model.Pizza"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/entete.jsp"></c:import>
+
 <c:set var="pizza" scope="page" value="${pizza}"></c:set>
 <title>Pizzeria - Modifier la pizza ${pizza.nom}</title>
 </head>
 <body>
-<c:import url="/nav_entete.jsp"></c:import>
+	<c:import url="/nav_entete.jsp"></c:import>
 	<div class="jumbotron">
 		<div class="container">
-			<h2>Modifier la pizza ${pizza.nom}</h2>
+			<h2>Ajouter une pizza</h2>
 		</div>
 	</div>
 	<div class="container">
 		<form class="form-horizontal" method="post"
-			action="<c:url value="/pizzas/edit"/>">
+			action="<c:url value="/pizzas/new"/>">
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend> Modifier la pizza ${pizza.nom}</legend>
+				<legend> Ajouter une pizza </legend>
 
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="code">Code</label>
 					<div class="col-md-4">
 						<input id="code" name="code" type="text" placeholder="code"
-							class="form-control input-md" required="" value="${pizza.code}">
+							class="form-control input-md" required="" value="">
 
 					</div>
 				</div>
@@ -39,7 +39,7 @@
 					<label class="col-md-4 control-label" for="nom">Nom</label>
 					<div class="col-md-4">
 						<input id="nom" name="nom" type="text" placeholder="nom"
-							class="form-control input-md" required="" value="${pizza.nom}">
+							class="form-control input-md" required="" value="">
 
 					</div>
 				</div>
@@ -49,7 +49,8 @@
 					<label class="col-md-4 control-label" for="prix">Prix</label>
 					<div class="col-md-4">
 						<input id="prix" name="prix" type="text" placeholder="prix"
-							class="form-control input-md" required="" value="${pizza.prix}">
+							class="form-control input-md" required=""
+							value="">
 
 					</div>
 				</div>
@@ -60,24 +61,9 @@
 						de Pizza</label>
 					<div class="col-md-4">
 						<select id="categ_pizza" name="categ_pizza" class="form-control">
-							<c:if test="${!empty pizza}">
-								<c:if test="${pizza.categPizza.nomCateg == 'Viande'}">
-									<option value="VIANDE" <c:out value="selected='selected'"/>>Viande</option>
-									<option value="SANS_VIANDE">Sans Viande</option>
-									<option value="POISSON">Poisson</option>
-								</c:if>
-								<c:if test="${pizza.categPizza.nomCateg == 'Sans Viande'}">
-									<option value="SANS_VIANDE"
-										<c:out value="selected='selected'"/>>Sans Viande</option>
-									<option value="VIANDE">Viande</option>
-									<option value="POISSON">Poisson</option>
-								</c:if>
-								<c:if test="${pizza.categPizza.nomCateg == 'Poisson'}">
-									<option value="POISSON" <c:out value="selected='selected'"/>>Poisson</option>
-									<option value="SANS_VIANDE">Sans Viande</option>
-									<option value="VIANDE">Viande</option>
-								</c:if>
-							</c:if>
+							<option value="VIANDE">Viande</option>
+							<option value="SANS_VIANDE">Sans Viande</option>
+							<option value="POISSON">Poisson</option>
 						</select>
 					</div>
 				</div>

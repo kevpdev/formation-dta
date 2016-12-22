@@ -1,51 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="fr.pizzeria.model.Pizza"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
-<meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
-<script
-	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:import url="/entete.jsp"></c:import>
+
 <title>Pizzeria</title>
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Pizzeria la Florentina</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Accueil</a></li>
-					<li><a href="#about">La carte</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-	</nav>
+<c:import url="/nav_entete.jsp"></c:import>
 	<div class="jumbotron">
 		<div class="container">
-			<h2>Gestion des pizzas</h2>
-			<h3></h3>
+			<h2>Bienvenue ${utilisateur}</h2>
+			<h3>Gestion des pizzas</h3>
 		</div>
 
 	</div>
 	<div class="container">
-		<a href="#" class="btn btn-success">Ajouter</a>
-		<table class="table">
+		<a href='<c:url value="/pizzas/new"/>' class="btn btn-success">Ajouter</a>
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Code</th>
@@ -58,18 +34,23 @@
 				</tr>
 			</thead>
 			<tbody>
-						
-			<c:forEach var="pizza" items="${pizzas}">
-			<tr>
+
+				<c:forEach var="pizza" items="${pizzas}">
+					<tr>
 						<td>${pizza.code}</td>
-						<td>{pizza.nom}</td>
-						<td>{pizza.prix}</td>
-						<td>{pizza.CategoriePizza}</td>
-						<td>image</td>
-						<td><a href='<c:url value="/pizzas/edit?code=${pizza.code}"/>' class="btn btn-primary">Modifier</a>
-					<td><a href='<c:url value="/pizzas/delete?code=${pizza.code}"/>' class="btn btn-danger">Supprimer</a>
+						<td>${pizza.nom}</td>
+						<td>${pizza.prix}€</td>
+						<td>${pizza.categPizza.nomCateg}</td>
+						<td><img src="<c:url value="/images/pizzas/${pizza.url}"/>"
+							width="70" /></td>
+						<td><a
+							href='<c:url value="/pizzas/edit?code=${pizza.code}"/>'
+							class="btn btn-primary">Modifier</a>
+						<td><a
+							href='<c:url value="/pizzas/delete?code=${pizza.code}"/>'
+							class="btn btn-danger">Supprimer</a>
 					</tr>
-			</c:forEach>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
