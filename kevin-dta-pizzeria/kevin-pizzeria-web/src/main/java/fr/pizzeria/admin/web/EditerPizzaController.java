@@ -55,13 +55,13 @@ public class EditerPizzaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String ancienCode = request.getParameter("anciencode");
 		String code = request.getParameter("code");
 		String nom = request.getParameter("nom");
 		String prix = request.getParameter("prix");
 		String categ = request.getParameter("categ_pizza");
 		String url = request.getParameter("url_image");
-		Pizza pizza = servicePizza.getPizzaByCode(code);
+		Pizza pizza = servicePizza.getPizzaByCode(ancienCode);
 		Logger.getLogger(EditerPizzaController.class.getName()).info("pizza : " + pizza);
 
 		if (pizza != null) {
