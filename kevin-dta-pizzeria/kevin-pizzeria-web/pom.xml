@@ -7,7 +7,7 @@
 		<groupId>dta.pizzeria</groupId>
 		<artifactId>kevin-dta-pizzeria</artifactId>
 		<version>1</version>
-		<relativePath>../</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>kevin-pizzeria-web</artifactId>
 	<packaging>war</packaging>

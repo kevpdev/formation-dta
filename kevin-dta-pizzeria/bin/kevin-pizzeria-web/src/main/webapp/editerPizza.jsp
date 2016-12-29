@@ -10,7 +10,7 @@
 <title>Pizzeria - Modifier la pizza ${pizza.nom}</title>
 </head>
 <body>
-<c:import url="/nav_entete.jsp"></c:import>
+	<c:import url="/nav_entete.jsp"></c:import>
 	<div class="jumbotron">
 		<div class="container">
 			<h2>Modifier la pizza ${pizza.nom}</h2>
@@ -30,7 +30,8 @@
 					<div class="col-md-4">
 						<input id="code" name="code" type="text" placeholder="code"
 							class="form-control input-md" required="" value="${pizza.code}">
-
+						<input id="anciencode" name="anciencode" type="hidden" placeholder="anciencode"
+							class="form-control input-md" required="" value="${pizza.code}">
 					</div>
 				</div>
 
