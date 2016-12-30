@@ -14,24 +14,34 @@
 			<a class="navbar-brand" href="<c:url value="/pizzas/list" />">Pizzeria
 				la Florentina</a>
 		</div>
+
 		<div id="navbar" class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="<c:url value="/pizzas/list" />">Accueil</a></li>
-				<li><a href="#about">Gérer</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
+			<c:if test="${null != utilisateur}">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="<c:url value="/pizzas/list" />">Accueil</a></li>
+					<li class="dropdown"><a href="" class="dropdown-toggle"
+						type="button" data-toggle="dropdown">Gérer<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ><a href="<c:url value="/pizzas/list" />">Pizzas</a></li>
+							<li><a href="#about">Commandes</a></li>
+							<li><a href="#about">Clients</a></li>
+						</ul></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</c:if>
+
 			<c:if test="${null == utilisateur}">
-				<form class="navbar-form navbar-right"method="post"
+				<form class="navbar-form navbar-right" method="post"
 					action="<c:url value="/login"/>">
 					<div class="form-group">
-							<input id="code" name="login" type="text"
-								placeholder="Nom d'utilisateur" class="form-control input-md"
-								required="" value="">
+						<input id="code" name="login" type="text"
+							placeholder="Nom d'utilisateur" class="form-control input-md"
+							required="" value="">
 					</div>
 					<div class="form-group">
-							<input id="nom" name="motdepasse" type="password"
-								placeholder="Mot de passe" class="form-control input-md"
-								required="" value="">
+						<input id="nom" name="motdepasse" type="password"
+							placeholder="Mot de passe" class="form-control input-md"
+							required="" value="">
 					</div>
 					<button type="submit" class="btn btn-success">Se connecter</button>
 				</form>
