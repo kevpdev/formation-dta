@@ -32,7 +32,15 @@ public class PizzaDaoJpaFactory implements PizzaDao {
 	public List<Pizza> findAllPizzas() {
 
 		EntityManager em = getEmf().createEntityManager();
-		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findAll", Pizza.class);
+		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findAllNoArchive", Pizza.class);
+		List<Pizza> pizzas = query.getResultList();
+		return pizzas;
+	}
+
+	@Override
+	public List<Pizza> findAllArchive() {
+		EntityManager em = getEmf().createEntityManager();
+		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findAllArchive", Pizza.class);
 		List<Pizza> pizzas = query.getResultList();
 		return pizzas;
 	}
@@ -114,6 +122,22 @@ public class PizzaDaoJpaFactory implements PizzaDao {
 
 	public void setEmf(EntityManagerFactory emf) {
 		this.emf = emf;
+	}
+
+	@Override
+	public void archivePizza(Pizza pizza) {
+		EntityManager em = getEmf().createEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		Pizza pizzaUpdate = em.find(Pizza.class, pizza.getId());
+
+		if (pizzaUpdate != null) {
+			pizzaUpdate.setArchive(pizza.isArchive());
+			em.merge(pizzaUpdate);
+			et.commit();
+
+		}
+
 	}
 
 }

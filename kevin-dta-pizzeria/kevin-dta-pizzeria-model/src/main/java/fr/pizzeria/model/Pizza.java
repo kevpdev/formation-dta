@@ -16,8 +16,9 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "pizza.findAll", query = "SELECT p FROM Pizza p"),
-		@NamedQuery(name = "pizza.findPizzaByCode", query = "SELECT p FROM Pizza p WHERE p.code = :code") })
+@NamedQueries({ @NamedQuery(name = "pizza.findAllNoArchive", query = "SELECT p FROM Pizza p WHERE p.archive = 1"),
+		@NamedQuery(name = "pizza.findPizzaByCode", query = "SELECT p FROM Pizza p WHERE p.code = :code"),
+		@NamedQuery(name = "pizza.findAllArchive", query = "SELECT p FROM Pizza p WHERE p.archive = 0"), })
 
 @Table(name = "pizza")
 public class Pizza {

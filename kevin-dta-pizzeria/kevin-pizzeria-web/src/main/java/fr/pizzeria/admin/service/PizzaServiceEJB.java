@@ -23,7 +23,7 @@ public class PizzaServiceEJB implements PizzaDao {
 	@Override
 	public List<Pizza> findAllPizzas() {
 
-		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findAll", Pizza.class);
+		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findAllNoArchive", Pizza.class);
 		List<Pizza> pizzas = query.getResultList();
 		return pizzas;
 	}
@@ -80,6 +80,25 @@ public class PizzaServiceEJB implements PizzaDao {
 	public Pizza getPizzaByPizza(Pizza pizza) {
 
 		return null;
+	}
+
+	@Override
+	public void archivePizza(Pizza pizza) {
+		Pizza pizzaUpdate = em.find(Pizza.class, pizza.getId());
+
+		if (pizzaUpdate != null) {
+			pizzaUpdate.setArchive(pizza.isArchive());
+			em.merge(pizzaUpdate);
+
+		}
+	}
+
+	@Override
+	public List<Pizza> findAllArchive() {
+
+		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findAllArchive", Pizza.class);
+		List<Pizza> pizzas = query.getResultList();
+		return pizzas;
 	}
 
 }

@@ -268,4 +268,14 @@ public class PizzaDaoJdbcFactory implements PizzaDao {
 		});
 	}
 
+	@Override
+	public void archivePizza(Pizza pizza) {
+
+	}
+
+	@Override
+	public List<Pizza> findAllArchive() {
+		return null;
+	}
+
 }

@@ -136,4 +136,14 @@ public class PizzaDaoFileFactory implements PizzaDao {
 		this.prop = prop;
 	}
 
+	@Override
+	public void archivePizza(Pizza pizza) {
+
+	}
+
+	@Override
+	public List<Pizza> findAllArchive() {
+		return null;
+	}
+
 }

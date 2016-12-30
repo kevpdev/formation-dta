@@ -17,7 +17,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="<c:url value="/pizzas/list" />">Accueil</a></li>
-				<li><a href="#about">La carte</a></li>
+				<li><a href="#about">Gérer</a></li>
 				<li><a href="#contact">Contact</a></li>
 			</ul>
 			<c:if test="${null == utilisateur}">

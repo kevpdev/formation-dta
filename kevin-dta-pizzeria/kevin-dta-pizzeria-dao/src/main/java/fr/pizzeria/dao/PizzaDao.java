@@ -69,4 +69,18 @@ public interface PizzaDao {
 		throw new PizzaException("pas d'implémentation");
 	}
 
+	/**
+	 * Archive une pizza
+	 * 
+	 * @param pizza
+	 */
+	void archivePizza(Pizza pizza);
+
+	/**
+	 * 
+	 * @return List<Pizza>
+	 * @throws PizzaException
+	 */
+	List<Pizza> findAllArchive();
+
 }

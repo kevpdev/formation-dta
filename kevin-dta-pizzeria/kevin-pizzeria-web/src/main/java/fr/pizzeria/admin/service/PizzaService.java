@@ -46,4 +46,13 @@ public class PizzaService {
 		return pizzaDao.getPizzaByCode(code);
 	}
 
+	public void archivePizza(Pizza pizza) {
+		pizzaDao.archivePizza(pizza);
+	}
+
+	public List<Pizza> findAllArchive() {
+
+		return pizzaDao.findAllArchive();
+	}
+
 }

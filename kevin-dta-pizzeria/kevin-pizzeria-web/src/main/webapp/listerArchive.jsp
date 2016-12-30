@@ -20,8 +20,7 @@
 
 	</div>
 	<div class="container">
-		<a href='<c:url value="/pizzas/new"/>' class="btn btn-success">Ajouter</a>
-		<a href='<c:url value="/pizzas/corbeille"/>' class="btn btn-danger">Corbeille</a>
+		<a href='<c:url value="/pizzas/list"/>' class="btn btn-primary">retour</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -45,8 +44,8 @@
 						<td><img src="<c:url value="/images/pizzas/${pizza.url}"/>"
 							width="70" /></td>
 						<td><a
-							href='<c:url value="/pizzas/edit?code=${pizza.code}"/>'
-							class="btn btn-primary">Modifier</a>
+							href='<c:url value="/pizzas/desarchiver?code=${pizza.code}"/>'
+							class="btn btn-primary">Désarchiver</a>
 						<td><a
 							href='<c:url value="/pizzas/delete?code=${pizza.code}"/>'
 							class="btn btn-danger">Supprimer</a>

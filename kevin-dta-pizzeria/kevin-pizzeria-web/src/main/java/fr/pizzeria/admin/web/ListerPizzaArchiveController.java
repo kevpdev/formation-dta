@@ -1,9 +1,10 @@
 package fr.pizzeria.admin.web;
 
 import java.io.IOException;
-import java.util.logging.Logger;
+import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +15,10 @@ import fr.pizzeria.admin.service.PizzaService;
 import fr.pizzeria.model.Pizza;
 
 /**
- * Servlet implementation class SuppPizzaController
+ * Servlet implementation class ListerPizzaArchiveController
  */
-@WebServlet("/pizzas/delete")
-public class SuppPizzaController extends HttpServlet {
+@WebServlet("/pizzas/corbeille")
+public class ListerPizzaArchiveController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private PizzaService servicePizza;
@@ -25,7 +26,7 @@ public class SuppPizzaController extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SuppPizzaController() {
+	public ListerPizzaArchiveController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,18 +37,11 @@ public class SuppPizzaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String code = request.getParameter("code");
-		Pizza pizza = servicePizza.getPizzaByCode(code);
-		Logger.getLogger(EditerPizzaController.class.getName()).info("pizza : " + pizza);
+		List<Pizza> pizzas = servicePizza.findAllArchive();
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/listerArchive.jsp");
+		request.setAttribute("pizzas", pizzas);
+		dispatcher.forward(request, response);
 
-		if (pizza != null) {
-			pizza.setArchive(false);
-			servicePizza.archivePizza(pizza);
-
-			response.sendRedirect(request.getContextPath() + "/pizzas/list");
-		} else {
-			response.sendRedirect("/pizzas/error");
-		}
 	}
 
 	/**
@@ -56,7 +50,8 @@ public class SuppPizzaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
