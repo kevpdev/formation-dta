@@ -3,6 +3,7 @@ C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-con
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\Menu.java
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\ListPizzaByCatag.java
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\PizzaTarifMax.java
+<<<<<<< HEAD
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\Ecran.java
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\DeletePizza.java
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\ImportPizza.java
@@ -11,3 +12,13 @@ C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-con
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\UpdatePizza.java
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\tool\IhmUtil.java
 C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\AddPizza.java
+=======
+C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\DeletePizza.java
+C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\ImportPizza.java
+C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\Option.java
+C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\UpdatePizza.java
+C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\tool\IhmUtil.java
+C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\AddPizza.java
+C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\EcranPrincipal.java
+C:\Users\ETY11\Documents\formation-dta\kevin-dta-pizzeria\kevin-dta-pizzeria-console\src\main\java\fr\pizzeria\ihm\ExitMenu.java
+>>>>>>> modif branch

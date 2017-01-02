@@ -21,6 +21,7 @@
 	</div>
 	<div class="container">
 		<a href='<c:url value="/pizzas/new"/>' class="btn btn-success">Ajouter</a>
+		<a href='<c:url value="/pizzas/corbeille"/>' class="btn btn-danger">Corbeille</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>

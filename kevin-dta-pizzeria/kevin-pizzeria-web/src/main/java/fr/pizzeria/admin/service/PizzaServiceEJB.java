@@ -68,7 +68,7 @@ public class PizzaServiceEJB implements PizzaDao {
 	}
 
 	@Override
-	public Pizza getPizzaByCode(Object code) {
+	public Pizza getPizzaByCode(String code) {
 		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findPizzaByCode", Pizza.class);
 		query.setParameter("code", code.toString());
 		Pizza pizza = query.getResultList().get(0);

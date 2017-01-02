@@ -138,7 +138,7 @@ public class PizzaDaoJdbcFactory implements PizzaDao {
 	}
 
 	@Override
-	public Pizza getPizzaByCode(Object code) {
+	public Pizza getPizzaByCode(String code) {
 		Pizza pizza = new Pizza();
 		return executePrep(con -> {
 			try {

@@ -97,7 +97,7 @@ public class PizzaDaoJpaFactory implements PizzaDao {
 	}
 
 	@Override
-	public Pizza getPizzaByCode(Object code) {
+	public Pizza getPizzaByCode(String code) {
 		EntityManager em = getEmf().createEntityManager();
 		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findPizzaByCode", Pizza.class);
 		query.setParameter("code", code.toString());

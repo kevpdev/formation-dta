@@ -114,7 +114,7 @@ public class PizzaDaoFileFactory implements PizzaDao {
 	}
 
 	@Override
-	public Pizza getPizzaByCode(Object code) {
+	public Pizza getPizzaByCode(String code) {
 
 		return null;
 	}

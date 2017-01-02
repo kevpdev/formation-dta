@@ -50,7 +50,7 @@ public interface PizzaDao {
 	 * @return Pizza
 	 * @throws PizzaException
 	 */
-	Pizza getPizzaByCode(Object code);
+	Pizza getPizzaByCode(String code);
 
 	/**
 	 * 

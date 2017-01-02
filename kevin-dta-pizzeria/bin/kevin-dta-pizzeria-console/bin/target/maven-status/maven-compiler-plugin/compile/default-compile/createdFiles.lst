@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 fr\pizzeria\ihm\Ecran.class
 fr\pizzeria\ihm\UpdatePizza.class
 fr\pizzeria\tool\MenuOptions.class
@@ -8,6 +9,18 @@ fr\pizzeria\ihm\ListPizza.class
 fr\pizzeria\ihm\AddPizza.class
 fr\pizzeria\ihm\PizzaTarifMax.class
 fr\pizzeria\ihm\DeletePizza.class
+=======
+fr\pizzeria\ihm\UpdatePizza.class
+fr\pizzeria\tool\MenuOptions.class
+fr\pizzeria\ihm\Option.class
+fr\pizzeria\ihm\Menu.class
+fr\pizzeria\ihm\ListPizza.class
+fr\pizzeria\ihm\AddPizza.class
+fr\pizzeria\ihm\EcranPrincipal.class
+fr\pizzeria\ihm\PizzaTarifMax.class
+fr\pizzeria\ihm\DeletePizza.class
+fr\pizzeria\ihm\ExitMenu.class
+>>>>>>> modif branch
 fr\pizzeria\ihm\ListPizzaByCatag.class
 fr\pizzeria\tool\IhmUtil.class
 fr\pizzeria\ihm\ImportPizza.class

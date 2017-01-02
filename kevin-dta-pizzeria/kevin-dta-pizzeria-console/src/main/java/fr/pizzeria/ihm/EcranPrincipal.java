@@ -28,7 +28,7 @@ public class EcranPrincipal {
 		System.out.println("p1=p2 ? " + p1.equals(p2));
 
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
-		String daoImpl = bundle.getString("dao.impl");
+		String daoImpl = bundle.getString("pizza.dao.impl");
 		PizzaDao daofactory;
 		try {
 

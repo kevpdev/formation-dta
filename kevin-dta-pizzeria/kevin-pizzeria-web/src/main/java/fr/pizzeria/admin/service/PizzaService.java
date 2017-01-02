@@ -42,7 +42,7 @@ public class PizzaService {
 		return pizzaDao.updatePizza(pizza);
 	}
 
-	public Pizza getPizzaByCode(Object code) {
+	public Pizza getPizzaByCode(String code) {
 		return pizzaDao.getPizzaByCode(code);
 	}
 
