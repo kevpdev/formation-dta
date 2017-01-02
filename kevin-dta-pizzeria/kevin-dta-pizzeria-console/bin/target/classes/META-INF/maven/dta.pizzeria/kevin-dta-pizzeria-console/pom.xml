@@ -32,9 +32,31 @@
 			<version>1</version>
 		</dependency>
 		<dependency>
+<<<<<<< HEAD
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.40</version>
+=======
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+>>>>>>> modif branch
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -47,14 +69,28 @@
 		<profile>
 			<id>base</id>
 			<properties>
+<<<<<<< HEAD
 				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+=======
+				<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
+				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
+				<jdbc.mysql.user>root</jdbc.mysql.user>
+				<jdbc.mysql.pwd></jdbc.mysql.pwd>
+>>>>>>> modif branch
 			</properties>
 		</profile>
 		<profile>
 			<id>dev</id>
 			<properties>
 				<dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
+<<<<<<< HEAD
 				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+=======
+					<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
+				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
+				<jdbc.mysql.user>root</jdbc.mysql.user>
+				<jdbc.mysql.pwd></jdbc.mysql.pwd>
+>>>>>>> modif branch
 			</properties>
 		</profile>
 		<profile>
@@ -64,10 +100,31 @@
 			</properties>
 		</profile>
 		<profile>
+<<<<<<< HEAD
 			<id>prod</id>
 			<properties>
 				<dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
 				<mysql.driver>jdbc:mysql://localhost:3306/pizzeria</mysql.driver>
+=======
+			<id>dev3</id>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.PizzaDaoJpa</dao.impl>
+					<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria2</jdbc.mysql.url>
+				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
+				<jdbc.mysql.user>root</jdbc.mysql.user>
+				<jdbc.mysql.pwd></jdbc.mysql.pwd>
+				<persistance.unit.name>kevin-dta-pizzeria</persistance.unit.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</dao.impl>
+					<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
+				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
+				<jdbc.mysql.user>root</jdbc.mysql.user>
+				<jdbc.mysql.pwd></jdbc.mysql.pwd>
+>>>>>>> modif branch
 			</properties>
 		</profile>
 	</profiles>
