@@ -24,7 +24,7 @@
 						<ul class="dropdown-menu">
 							<li ><a href="<c:url value="/pizzas/list" />">Pizzas</a></li>
 							<li><a href="#about">Commandes</a></li>
-							<li><a href="#about">Clients</a></li>
+							<li><a href="<c:url value="/clients.jsp" />">Clients</a></li>
 						</ul></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>

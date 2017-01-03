@@ -14,7 +14,7 @@ public interface ClientDao {
 
 	boolean deleteClient(Client client);
 
-	<T> Client getClientById(T id);
+	Client getClientById(int id);
 
 	Client login(String email, String motDePasse);
 }

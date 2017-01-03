@@ -66,7 +66,7 @@ public class ClientDaoJpaFactory implements ClientDao {
 	}
 
 	@Override
-	public <T> Client getClientById(T id) {
+	public Client getClientById(int id) {
 
 		return null;
 	}

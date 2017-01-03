@@ -3,5 +3,6 @@
 	<persistence-unit name="pizza-db">
 		<jta-data-source>jdbc/pizza-ds</jta-data-source>
 		<class>fr.pizzeria.model.Pizza</class>
+		<class>fr.pizzeria.model.Client</class>
 	</persistence-unit>
 </persistence>

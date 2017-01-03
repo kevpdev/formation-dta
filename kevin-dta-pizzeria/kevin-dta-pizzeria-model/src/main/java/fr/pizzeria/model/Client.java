@@ -156,4 +156,17 @@ public class Client extends Personne {
 		this.telephone = telepone;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 * 
+	 * @return
+	 */
+	@Override
+	public String toString() {
+		return "Client [motDePasse=" + motDePasse + ", adresse=" + adresse + ", ville=" + ville + ", codePostal="
+				+ codePostal + ", telephone=" + telephone + "]";
+	}
+
 }
