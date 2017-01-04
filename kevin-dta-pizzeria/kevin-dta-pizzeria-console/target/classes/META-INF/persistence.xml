@@ -12,9 +12,9 @@
 		<class>fr.pizzeria.model.Commande</class>
 
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="${jdbc.mysql.url}" />
-			<property name="javax.persistence.jdbc.user" value="${jdbc.mysql.user}" />
-			<property name="javax.persistence.jdbc.driver" value="${jdbc.mysql.driver}" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pizzeria" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 		</properties>
 	</persistence-unit>
 </persistence>

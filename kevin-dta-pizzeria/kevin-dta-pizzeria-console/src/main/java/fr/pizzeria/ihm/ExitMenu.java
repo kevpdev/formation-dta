@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 public class ExitMenu extends Option {
+
 	/**
 	 * 
 	 * Constructeur de la classe

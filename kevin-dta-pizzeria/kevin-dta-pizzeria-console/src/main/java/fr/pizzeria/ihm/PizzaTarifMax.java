@@ -3,6 +3,8 @@ package fr.pizzeria.ihm;
 import java.util.Comparator;
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
 
@@ -12,6 +14,7 @@ import fr.pizzeria.tool.IhmUtil;
  * @author ETY11
  *
  */
+@Controller
 public class PizzaTarifMax extends Option {
 
 	public IhmUtil ihmUtil;
@@ -24,9 +27,8 @@ public class PizzaTarifMax extends Option {
 	 * @author ETY11
 	 * @param ihmUtil
 	 */
-	public PizzaTarifMax(IhmUtil ihmUtil) {
+	public PizzaTarifMax() {
 		this.setLibelle("6. Afficher la pizza au tarif le plus �lev�");
-		this.ihmUtil = ihmUtil;
 	}
 
 	@Override

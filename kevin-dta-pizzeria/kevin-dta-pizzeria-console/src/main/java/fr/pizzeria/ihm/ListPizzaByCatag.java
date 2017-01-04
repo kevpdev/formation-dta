@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tool.IhmUtil;
@@ -14,13 +17,13 @@ import fr.pizzeria.tool.IhmUtil;
  * @author ETY11
  *
  */
+@Controller
 public class ListPizzaByCatag extends Option {
-
+	@Autowired
 	public IhmUtil ihmUtil;
 
-	public ListPizzaByCatag(IhmUtil ihmUtil) {
+	public ListPizzaByCatag() {
 		this.setLibelle("5. Lister les pizzas group�es par cat�gorie");
-		this.ihmUtil = ihmUtil;
 	}
 
 	@Override

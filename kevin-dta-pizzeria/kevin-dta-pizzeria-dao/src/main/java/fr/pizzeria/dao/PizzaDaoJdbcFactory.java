@@ -22,7 +22,7 @@ import fr.pizzeria.model.Pizza;
  */
 public class PizzaDaoJdbcFactory implements PizzaDao {
 
-	private PoolConnection pc;
+	private DataSourceConfig datasource;
 
 	/**
 	 * 
@@ -40,11 +40,11 @@ public class PizzaDaoJdbcFactory implements PizzaDao {
 	 * 
 	 * @return
 	 */
-	public PoolConnection getPc() {
-		if (pc == null) {
-			pc = new PoolConnection();
+	public DataSourceConfig getDatasource() {
+		if (datasource == null) {
+			datasource = new DataSourceConfig();
 		}
-		return pc;
+		return datasource;
 	}
 
 	@Override
@@ -206,7 +206,7 @@ public class PizzaDaoJdbcFactory implements PizzaDao {
 	 * 
 	 */
 	public <T> T execute(IRunSql<T> run) {
-		try (Connection con = getPc().getConnection(); Statement stat = con.createStatement()) {
+		try (Connection con = getDatasource().getConnection(); Statement stat = con.createStatement()) {
 
 			return run.exec(con, stat);
 		} catch (SQLException e) {
@@ -221,7 +221,7 @@ public class PizzaDaoJdbcFactory implements PizzaDao {
 	 * @return
 	 */
 	public <T> T executePrep(IRunSqlPrep<T> run) {
-		try (Connection con = getPc().getConnection()) {
+		try (Connection con = getDatasource().getConnection()) {
 
 			return run.exec(con);
 		} catch (SQLException e) {

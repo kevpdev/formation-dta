@@ -3,10 +3,14 @@ package fr.pizzeria.ihm;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import fr.pizzeria.dao.PizzaDao;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.tool.IhmUtil;
 
 /**
  * Classe AddPizza
@@ -14,9 +18,13 @@ import fr.pizzeria.tool.IhmUtil;
  * @author ETY11
  *
  */
+@Controller
 public class AddPizza extends Option {
 
-	public IhmUtil ihmUtil;
+	@Autowired
+	public Scanner sc;
+	@Autowired
+	private PizzaDao pizzadao;
 
 	/**
 	 * 
@@ -26,9 +34,9 @@ public class AddPizza extends Option {
 	 * @author ETY11
 	 * @param ihmUtil
 	 */
-	public AddPizza(IhmUtil ihmUtil) {
+	public AddPizza() {
 		this.setLibelle("2. Ajouter une pizza");
-		this.ihmUtil = ihmUtil;
+
 	}
 
 	@Override
@@ -37,13 +45,13 @@ public class AddPizza extends Option {
 		System.out.println("Ajout d'une nouvelle pizza");
 
 		System.out.print("Veuillez saisir le code: ");
-		String code = ihmUtil.getScanner().next();
+		String code = sc.next();
 
 		System.out.print("Veuillez saisir le nom: ");
-		String nom = ihmUtil.getScanner().next();
+		String nom = sc.next();
 
 		System.out.print("Veuillez saisir le prix: ");
-		double prix = ihmUtil.getScanner().nextDouble();
+		double prix = sc.nextDouble();
 
 		System.out.println("Liste des cat�gories: ");
 		List<CategoriePizza> listCateg = new ArrayList<>(Arrays.asList(CategoriePizza.values()));
@@ -55,10 +63,10 @@ public class AddPizza extends Option {
 		}
 
 		System.out.print("Veuillez saisir le num�ro de la cat�gorie: ");
-		int categ = ihmUtil.getScanner().nextInt();
+		int categ = sc.nextInt();
 
 		Pizza pizza = new Pizza(0, code, nom, prix, listCateg.get(categ - 1));
-		System.out.println(ihmUtil.getPizzaDao().addPizza(pizza) ? "Ajout �ffectu� !" : "Echec de l'ajout !");
+		System.out.println(pizzadao.addPizza(pizza) ? "Ajout �ffectu� !" : "Echec de l'ajout !");
 
 	}
 

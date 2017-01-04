@@ -58,6 +58,14 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>4.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
 	</dependencies>
 	<profiles>
 		<profile>
@@ -73,7 +81,7 @@
 			<id>dev</id>
 			<properties>
 				<pizza.dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</pizza.dao.impl>
-					<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
+				<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
 				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
 				<jdbc.mysql.user>root</jdbc.mysql.user>
 				<jdbc.mysql.pwd></jdbc.mysql.pwd>
@@ -89,7 +97,7 @@
 			<id>dev3</id>
 			<properties>
 				<pizza.dao.impl>fr.pizzeria.dao.PizzaDaoJpa</pizza.dao.impl>
-					<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria2</jdbc.mysql.url>
+				<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria2</jdbc.mysql.url>
 				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
 				<jdbc.mysql.user>root</jdbc.mysql.user>
 				<jdbc.mysql.pwd></jdbc.mysql.pwd>
@@ -100,7 +108,7 @@
 			<id>prod</id>
 			<properties>
 				<pizza.dao.impl>fr.pizzeria.dao.PizzaDaoJdbcFactory</pizza.dao.impl>
-					<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
+				<jdbc.mysql.url>jdbc:mysql://localhost:3306/pizzeria</jdbc.mysql.url>
 				<jdbc.mysql.driver>com.mysql.jdbc.Driver</jdbc.mysql.driver>
 				<jdbc.mysql.user>root</jdbc.mysql.user>
 				<jdbc.mysql.pwd></jdbc.mysql.pwd>

@@ -1,7 +1,12 @@
 package fr.pizzeria.ihm;
 
+import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import fr.pizzeria.dao.PizzaDao;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.tool.IhmUtil;
 
 /**
  * Classe DeletePizza
@@ -9,9 +14,14 @@ import fr.pizzeria.tool.IhmUtil;
  * @author ETY11
  *
  */
+@Controller
 public class DeletePizza extends Option {
-
-	public IhmUtil ihmUtil;
+	@Autowired
+	public Scanner sc;
+	@Autowired
+	private PizzaDao pizzadao;
+	@Autowired
+	public ListPizza listp;
 
 	/**
 	 * 
@@ -21,25 +31,23 @@ public class DeletePizza extends Option {
 	 * @author ETY11
 	 * @param ihmUtil
 	 */
-	public DeletePizza(IhmUtil ihmUtil) {
+	public DeletePizza() {
 
 		this.setLibelle("4. Suppression d'une pizza");
-		this.ihmUtil = ihmUtil;
 	}
 
 	@Override
 	public void executeOption() {
-		ListPizza listp = new ListPizza(ihmUtil);
+
 		listp.executeOption();
 
 		System.out.print("Veuillez saisir le code de la pizza �  supprimer: ");
-		String codeASupprimer = ihmUtil.getScanner().next();
+		String codeASupprimer = sc.next();
 
-		Pizza pizzaASup = ihmUtil.getPizzaDao().getPizzaByCode(codeASupprimer);
+		Pizza pizzaASup = pizzadao.getPizzaByCode(codeASupprimer);
 		if (codeASupprimer != null) {
 
-			System.out.println(
-					ihmUtil.getPizzaDao().deletePizza(pizzaASup) ? "Suppression �ffectu�" : "Echec de la suppression");
+			System.out.println(pizzadao.deletePizza(pizzaASup) ? "Suppression �ffectu�" : "Echec de la suppression");
 
 		} else {
 			System.out.println("la pizza � supprimer n'existe pas !");

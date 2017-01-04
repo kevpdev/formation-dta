@@ -2,9 +2,14 @@ package fr.pizzeria.ihm;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import fr.pizzeria.dao.PizzaDao;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.TypeTriPizza;
-import fr.pizzeria.tool.IhmUtil;
 
 /**
  * Classe ListPizza
@@ -12,10 +17,15 @@ import fr.pizzeria.tool.IhmUtil;
  * @author ETY11
  *
  */
+@Controller
 public class ListPizza extends Option {
+	@Autowired
+	private PizzaDao pizzadao;
+	private TypeTriPizza ttp;
 
-	public IhmUtil ihmUtil;
-	public TypeTriPizza ttp;
+	public ListPizza() {
+
+	}
 
 	/**
 	 * 
@@ -25,15 +35,19 @@ public class ListPizza extends Option {
 	 * @author ETY11
 	 * @param ihmUtil
 	 */
-	public ListPizza(IhmUtil ihmUtil) {
+	// public ListPizza(IhmUtil ihmUtil) {
+	// this.setLibelle("1. Liste des pizza");
+	// this.ihmUtil = ihmUtil;
+	// }
+
+	@PostConstruct
+	public void init() {
 		this.setLibelle("1. Liste des pizza");
-		this.ihmUtil = ihmUtil;
 	}
 
 	@Override
 	public void executeOption() {
-		ihmUtil.getPizzaDao().findAllPizzas();
-		List<Pizza> pizzas = ihmUtil.getPizzaDao().findAllPizzas();
+		List<Pizza> pizzas = pizzadao.findAllPizzas();
 		pizzas.forEach(System.out::println);
 
 	}

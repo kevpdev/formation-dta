@@ -3,10 +3,14 @@ package fr.pizzeria.ihm;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import fr.pizzeria.dao.PizzaDao;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.tool.IhmUtil;
 
 /**
  * Classe UpdatePizza
@@ -14,9 +18,14 @@ import fr.pizzeria.tool.IhmUtil;
  * @author ETY11
  *
  */
+@Controller
 public class UpdatePizza extends Option {
-
-	public IhmUtil ihmUtil;
+	@Autowired
+	public Scanner sc;
+	@Autowired
+	private PizzaDao pizzadao;
+	@Autowired
+	public ListPizza listp;
 
 	/**
 	 * 
@@ -24,34 +33,32 @@ public class UpdatePizza extends Option {
 	 * 
 	 * @date 12 déc. 2016
 	 * @author ETY11
-	 * @param ihmUtil
 	 */
-	public UpdatePizza(IhmUtil ihmUtil) {
+	public UpdatePizza() {
 
 		this.setLibelle("3. Mise � jour d'une pizza");
-		this.ihmUtil = ihmUtil;
+
 	}
 
 	@Override
 	public void executeOption() {
 
-		ListPizza listp = new ListPizza(ihmUtil);
 		listp.executeOption();
 
 		System.out.print("Veuillez saisir le code de la pizza � modifier: ");
-		String codeAmodifier = ihmUtil.getScanner().next();
+		String codeAmodifier = sc.next();
 
-		Pizza pizzaAModifier = ihmUtil.getPizzaDao().getPizzaByCode(codeAmodifier);
+		Pizza pizzaAModifier = pizzadao.getPizzaByCode(codeAmodifier);
 		if (!(pizzaAModifier == null)) {
 
 			System.out.print("Veuillez saisir le nouveau code: ");
-			String code = ihmUtil.getScanner().next();
+			String code = sc.next();
 
 			System.out.print("Veuillez saisir le nouveau nom: ");
-			String nom = ihmUtil.getScanner().next();
+			String nom = sc.next();
 
 			System.out.print("Veuillez saisir le nouveau prix: ");
-			double prix = ihmUtil.getScanner().nextDouble();
+			double prix = sc.nextDouble();
 
 			System.out.println("Liste des cat�gories: ");
 			List<CategoriePizza> listCateg = new ArrayList<>(Arrays.asList(CategoriePizza.values()));
@@ -62,11 +69,10 @@ public class UpdatePizza extends Option {
 			}
 
 			System.out.print("Veuillez saisir le num�ro de la cat�gorie: ");
-			int categ = ihmUtil.getScanner().nextInt();
+			int categ = sc.nextInt();
 			System.out.println(categ);
 			Pizza pizza = new Pizza(pizzaAModifier.getId(), code, nom, prix, listCateg.get(categ - 1));
-			System.out.println(
-					ihmUtil.getPizzaDao().updatePizza(pizza) ? "Mise � jour �ffectu� !" : "Echec de la mise � jour!");
+			System.out.println(pizzadao.updatePizza(pizza) ? "Mise � jour �ffectu� !" : "Echec de la mise � jour!");
 
 		} else {
 			System.out.println("Aucune pizza trouv�e !");

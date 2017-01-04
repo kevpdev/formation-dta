@@ -1,5 +1,8 @@
 package fr.pizzeria.ihm;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.model.TypeTriPizza;
 import fr.pizzeria.tool.IhmUtil;
 
@@ -9,8 +12,9 @@ import fr.pizzeria.tool.IhmUtil;
  * @author ETY11
  *
  */
+@Controller
 public class ImportPizza extends Option {
-
+	@Autowired
 	public IhmUtil ihmUtil;
 	public TypeTriPizza ttp;
 
@@ -22,9 +26,8 @@ public class ImportPizza extends Option {
 	 * @author ETY11
 	 * @param ihmUtil
 	 */
-	public ImportPizza(IhmUtil ihmUtil) {
+	public ImportPizza() {
 		this.setLibelle("7. Importer les données (base de données)");
-		this.ihmUtil = ihmUtil;
 	}
 
 	@Override
