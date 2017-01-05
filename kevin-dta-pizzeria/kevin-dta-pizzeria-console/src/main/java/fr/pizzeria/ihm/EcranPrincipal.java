@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import fr.pizzeria.PizzeriaAppSpringConfig;
 import fr.pizzeria.model.Pizza;
 
 /**

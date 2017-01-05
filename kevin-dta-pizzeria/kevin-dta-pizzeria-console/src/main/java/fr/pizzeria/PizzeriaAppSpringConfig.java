@@ -1,4 +1,4 @@
-package fr.pizzeria.ihm;
+package fr.pizzeria;
 
 import java.util.Locale;
 import java.util.Scanner;
