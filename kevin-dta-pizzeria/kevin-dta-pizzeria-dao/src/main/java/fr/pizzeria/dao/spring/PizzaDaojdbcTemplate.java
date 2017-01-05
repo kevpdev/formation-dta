@@ -59,7 +59,7 @@ public class PizzaDaojdbcTemplate implements PizzaDao {
 	@Override
 	public boolean addPizza(Pizza p) {
 
-		String sql = "INSERT INTO PIZZA (reference, libelle, prix, categ_pizza, url_image) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO PIZZA (>reference, libelle, prix, categ_pizza, url_image) VALUES(?,?,?,?,?)";
 		this.jdbcTemplate.update(sql, p.getCode(), p.getNom(), p.getPrix(), p.getCategPizza().name(), p.getUrl());
 		return true;
 	}
