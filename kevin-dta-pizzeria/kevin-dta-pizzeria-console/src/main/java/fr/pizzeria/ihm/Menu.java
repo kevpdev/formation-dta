@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import fr.pizzeria.tool.IhmUtil;
@@ -28,7 +28,7 @@ public class Menu {
 	public Map<Integer, Option> options = new HashMap<>();
 	private Logger LOGGER = Logger.getLogger(Menu.class.getName());
 	@Autowired
-	private AnnotationConfigApplicationContext context;
+	private ApplicationContext context;
 
 	public Menu() {
 		super();

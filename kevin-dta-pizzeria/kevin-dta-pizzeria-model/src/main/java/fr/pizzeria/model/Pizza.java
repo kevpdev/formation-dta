@@ -148,7 +148,15 @@ public class Pizza {
 		this(id, code, nom, prix, categ);
 
 		nbPizzas++;
-		this.getUrl();
+		this.setUrl(url);
+
+	}
+
+	public Pizza(String code, String nom, Double prix, CategoriePizza categ, String url) {
+		this(code, nom, prix, categ);
+
+		nbPizzas++;
+		this.setUrl(url);
 
 	}
 

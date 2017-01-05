@@ -1,6 +1,2 @@
-/.project
-/.settings/
-/kevin-dta-pizzeria-client/
-/kevin-dta-pizzeria-console/
-/kevin-dta-pizzeria-dao/
-/kevin-dta-pizzeria-model/
+/main/
+/test/

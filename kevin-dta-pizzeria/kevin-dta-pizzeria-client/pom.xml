@@ -57,7 +57,7 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>4.1</version>
 		</dependency>
-  </dependencies>
+	</dependencies>
 	<profiles>
 		<profile>
 			<id>base</id>
