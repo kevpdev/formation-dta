@@ -43,12 +43,6 @@ public class SpringTestDaoConfig {
 		return jdbcTemplate;
 	}
 
-	// @Bean
-	// public PizzaDao getPizzaDaoTest() {
-	// // return new PizzaDaojdbcTemplate();
-	// return new PizzaDaoSpringJPA();
-	// }
-
 	@Bean
 	public LocalEntityManagerFactoryBean entityManagerFactory() {
 
