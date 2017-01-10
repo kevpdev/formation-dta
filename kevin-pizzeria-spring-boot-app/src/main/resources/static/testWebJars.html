@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="webjars/jquery/3.1.1/jquery.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.css">
+<title>Liste Pizza</title>
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$.ajax({
+					url : 'http://localhost:8080/rest/pizzas',
+					type : 'GET',
+					dataType : 'JSON',
+					success : function(data) {
+						console.log(data);
+
+						$.each(data, function(index, value) {
+							console.log(index);
+							$("#tbody_data").append(
+									"<tr><td>" + value['code'] + "</td><td>"
+											+ value['nom'] + "</td><td>"
+											+ value['prix'] + "</td><td>"
+											+ value['categPizza'] + "</td><td>"
+											+ value['url'] + "</td></tr>");
+
+						});
+
+					}
+				});
+
+			});
+</script>
+</head>
+<body>
+
+	<div class="container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Categorie Pizza</th>
+					<th>images</th>
+				</tr>
+			</thead>
+			<tbody id="tbody_data">
+
+			</tbody>
+		</table>
+	</div>
+
+
+</body>
+</html>

@@ -29,8 +29,9 @@ public class PizzaDaoRepo implements PizzaDao {
 
 	@Override
 	public boolean addPizza(Pizza pizza) {
-		// TODO Auto-generated method stub
-		return false;
+		pizzaRepo.save(pizza);
+
+		return true;
 	}
 
 	@Override

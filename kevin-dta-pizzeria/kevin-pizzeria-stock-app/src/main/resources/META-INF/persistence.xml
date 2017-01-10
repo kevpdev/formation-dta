@@ -16,8 +16,6 @@
 			<property name="javax.persistence.jdbc.url" value="${jdbc.mysql.url}" />
 			<property name="javax.persistence.jdbc.user" value="${jdbc.mysql.user}" />
 			<property name="javax.persistence.jdbc.driver" value="${jdbc.mysql.driver}" />
-			<property name="javax.persistence.schema-generation.database.action"
-				value="drop-and-create" />
 		</properties>
 	</persistence-unit>
 	<persistence-unit name="pizza-h2" transaction-type="RESOURCE_LOCAL">

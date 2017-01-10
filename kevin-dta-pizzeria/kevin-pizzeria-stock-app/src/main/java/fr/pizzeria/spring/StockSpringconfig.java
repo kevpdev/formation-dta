@@ -13,6 +13,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * @author ETY11
@@ -42,6 +43,15 @@ public class StockSpringconfig {
 	@Bean
 	public PlatformTransactionManager transactionManager() {
 		return new JpaTransactionManager(entityManagerFactory().getObject());
+	}
+
+	@Bean
+	public InternalResourceViewResolver internalResourceResolver() {
+		InternalResourceViewResolver irvr = new InternalResourceViewResolver();
+		irvr.setPrefix("/WEB-INF/views/");
+		irvr.setSuffix(".jsp");
+		return irvr;
+
 	}
 
 }

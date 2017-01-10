@@ -40,7 +40,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
 		Dynamic dispatcher = servletContext.addServlet("dispacher", new DispatcherServlet(webContext));
 		dispatcher.setLoadOnStartup(1);
-		dispatcher.addMapping("/mvc/rest/*");
+		dispatcher.addMapping("/mvc/*");
 
 		servletContext.addListener(new ContextLoaderListener(webContext));
 
