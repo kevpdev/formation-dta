@@ -1,50 +1,68 @@
-import { RecipesService } from './services/recipes.service';
-import { PizzeriaService } from './services/pizzeria.service';
+import { RecipesService} from './services/recipes.service';
+import { PizzeriaService} from './services/pizzeria.service';
 
-const recipesService = new RecipesService();
-const pizzeriaService = new PizzeriaService(recipesService,  $('#pool .pizzas'));
+console.log('hello word');
 
-// liste des recettes
-recipesService.getRecipes()
+  const recipesService = new RecipesService();
+const pizzeriaService = new PizzeriaService(recipesService, $('#pool .pizzas'));
+//     recipesService.getRecipesNames().then(names=>{
+//     console.log('names', names);})
+
+// setTimeout(() => {
+
+//     recipesService.getRecipe('recette 1').then(recipe=>{
+//     console.log('recipe', recipe);})
+
+//     recipesService.queryRecipes('1').then(recipes=>{
+//     console.log('recipes', recipes);})
+
+//    const pizzeriaService = new PizzeriaService(recipesService);
+//     pizzeriaService.start(1000);
+//     pizzeriaService.sendPizza('Margharita');
+    
+// }, 1000)
+
+
+recipesService.getRecipesNames()
 .then(recipes => {
     
-    $('#recipes')
-        .html(recipes.map(recipe => `
-        <li>
-            ${ recipe.name.toUpperCase() }
-            ( ${ recipe.toppings.join(', ') } )
-        </li>
-        `));
+    $('#recipes').append(recipes.map(recipe => 
+            `<li class="list-group-item">${ recipe }</li>`));
 
-});
+})
+
+
+
 
 
 recipesService.getToppings()
 .then(toppings => {
     $('#toppings')
         .html(toppings.map(topping => `
-        <button draggable="true" data-topping="${ topping }" class="btn">${ topping }</button>
+        <button data-topping="${ topping }" class="btn btn-primary">${ topping }</button>
         `));
     $('#toppings button').click(function () {
        addTopping($(this).data('topping'));
-    });
-    $('#toppings button').on('dragstart', function (event) {
-         event.dataTransfer.setData("text/plain", $(this).data('topping'));
     });
 });
 
 let currentPizza;
 
-$('#startbtn').click(function () {
+$('#start').click(function () {
+      alert("go !!");
     pizzeriaService.start(1000);
     $(this).hide();
     $('#pool').show();
-    currentPizza = { toppings: [] };
+    currentPizza = {
+        toppings: []
+    };
 });
 
-function addTopping(topping) {
-    currentPizza.toppings.push(topping);
-    $('#pizza').html(currentPizza.toppings.join('<br>'));
+function addTopping(topping){
+currentPizza.toppings.push(topping);
+ $('#pizza').html(currentPizza.toppings.join('<br>'));
+console.log('currentPizza : '+currentPizza);
+
 }
 
 $('#sendPizza').click(function () {
@@ -56,18 +74,8 @@ $('#sendPizza').click(function () {
     });
 });
 
-$("#pizza").on("dragover", function(event) {
-    event.preventDefault();  
-    event.stopPropagation();
-});
 
-$("#pizza").on("dragleave", function(event) {
-    event.preventDefault();  
-    event.stopPropagation();
-});
 
-$("#pizza").on("drop", function(event) {
-    console.log('ici', event.dataTransfer.getData("text"));
-    event.preventDefault();  
-    event.stopPropagation();
-});
+
+
+
