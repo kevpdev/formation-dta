@@ -1,18 +1,30 @@
 import angular from 'angular';
-
+import ngRoute from 'angular-route';
 import { ExclamationFilter } from './exclamation.filter';
-import { EldestFilter } from './eldest.filter';
-import { MyFirstController } from './my-first.controller';
-import { UserService } from './user.service';
+import userModule from './user';
 
-angular.module('app', [])
+angular.module('app', [ngRoute, userModule])
 
-.controller('MyFirstController', MyFirstController)
 .filter('exclamation', ExclamationFilter)
-.filter('eldest', EldestFilter)
-.service('UserService', UserService)
-.value('Version', '1.0.0')
+    .value('Version', '1.0.0')
+
+.config(function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+    $routeProvider
+        .when('/', {
+            template: '<h1>Bienvenue</h1>'
+        }).when('/about', {
+            template: '<h1>About</h1>'
+        }).when('/tp', {
+            templateUrl: 'tp.html'
+        })
+        .otherwise('/');
+
+
+
+})
+
 
 .run(function() {
-  console.log('PizzaYOLO !');
+    console.log('PizzaYOLO !');
 })

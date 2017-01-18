@@ -5,15 +5,18 @@
          filename: 'app.bundle.js'
      },
 
-  module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            }
-        ]
-    },
-       devtool: 'source-map'
+     module: {
+         loaders: [{
+                 test: /\.js$/,
+                 exclude: /node_modules/,
+                 loader: 'babel-loader'
+             },
+             {
+                 test: /\.html$/,
+                 loader: 'raw-loader'
+             }
+         ]
+     },
+     devtool: 'source-map'
 
  };

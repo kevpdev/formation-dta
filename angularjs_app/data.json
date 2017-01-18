@@ -2,7 +2,7 @@
   "users": [
     {
       "name": "Paul",
-      "age": 5,
+      "age": 57,
       "id": 1
     },
     {
@@ -14,11 +14,6 @@
       "name": "Emilie",
       "age": 25,
       "id": 3
-    },
-    {
-      "name": "Aurelie",
-      "age": 5,
-      "id": 4
     }
   ]
 }
