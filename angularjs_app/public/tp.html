@@ -15,7 +15,7 @@
             <span ng-if="user.action">{{user.name}}</span>
         </li>
     </ul>
-    <p ng-class="{textcolor: ctrl.cssClass}" ng-click="ctrl.enableCss">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad unde porro cumque quisquam sunt provident officia repellat facilis laborum. Atque, magnam, culpa. Accusamus beatae deleniti cupiditate fugit, quae sit ullam!</p>
+    <p ng-class="{textcolor: ctrl.cssEnable}" ng-click="ctrl.enableCss()">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad unde porro cumque quisquam sunt provident officia repellat facilis laborum. Atque, magnam, culpa. Accusamus beatae deleniti cupiditate fugit, quae sit ullam!</p>
     <input type="text" ng-model="ctrl.name">
     <ul>
         <!--<li ng-repeat="user in ctrl.filter()">{{user.name}}</li>-->

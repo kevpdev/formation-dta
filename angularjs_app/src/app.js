@@ -2,8 +2,10 @@ import angular from 'angular';
 import ngRoute from 'angular-route';
 import { ExclamationFilter } from './exclamation.filter';
 import userModule from './user';
+import uiBoostrap from 'angular-ui-bootstrap';
+import soundBox from './soundbox';
 
-angular.module('app', [ngRoute, userModule])
+angular.module('app', [ngRoute, userModule, uiBoostrap, soundBox])
 
 .filter('exclamation', ExclamationFilter)
     .value('Version', '1.0.0')
@@ -17,7 +19,9 @@ angular.module('app', [ngRoute, userModule])
             template: '<h1>About</h1>'
         }).when('/tp', {
             templateUrl: 'tp.html'
-        })
+        }).when('/soundbox', {
+                template:'<sound-box></sound-box>'
+            })
         .otherwise('/');
 
 

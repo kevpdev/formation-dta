@@ -5,6 +5,8 @@
             <tr>
                 <th ng-click="ctrl.sort('name')">Nom</th>
                 <th ng-click="ctrl.sort('age')">Age</th>
+                <th ng-click="">Email</th>
+                <th ng-click="">Note</th>
                 <th></th>
             </tr>
         </thead>
@@ -12,6 +14,14 @@
             <tr ng-class="{ delete: ctrl.undo[user.id] }" ng-repeat="user in ctrl.users | filter:query | orderBy:ctrl.predicat:ctrl.reverse track by $index">
                 <td>{{ user.name }}</td>
                 <td>{{ user.age }}</td>
+               <td>
+
+                    <dta-gravatar
+                        on-deactivate="ctrl.deactivate()" 
+                        email="user.email"></dta-gravatar>
+                
+                </td>
+                <td>  <span uib-rating ng-model="ctrl.user.rate" max="10"></span></span></td>
                 <td style="text-align:right" ng-if="!ctrl.undo[user.id]">
                     <a ng-href="/user/{{ user.id }}" class="btn btn-primary">Editer</a>
                     <button ng-click="ctrl.deleteUser(user)" class="btn btn-danger">Supprimer</button>
@@ -29,6 +39,7 @@
     </table>
 
     <p>Le doyen : {{ ctrl.users | eldest }}</p>
-    <dta-user></dta-user>
+
+
 
 </div>

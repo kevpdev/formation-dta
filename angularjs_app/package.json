@@ -28,6 +28,10 @@
   },
   "dependencies": {
     "angular": "^1.6.1",
-    "angular-route": "^1.6.1"
+    "angular-route": "^1.6.1",
+    "angular-ui-bootstrap": "^2.4.0",
+    "css-loader": "^0.26.1",
+    "md5": "^2.2.1",
+    "style-loader": "^0.13.1"
   }
 }

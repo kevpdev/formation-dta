@@ -1,0 +1,16 @@
+ <div class="checkbox">
+            <label>
+            <input type="checkbox" ng-model="$ctrl.audio.loop"> loop
+            </label>
+        </div>
+ 
+        <button ng-click="$ctrl.delete()" type="button" class="close">
+            <span>&times;</span>
+        </button>
+
+<button ng-click="$ctrl.play()" type="button" class="btn btn-lg btn-block" >
+            <span ng-class="{ 'ion-ios-play': $ctrl.audio.paused, 'ion-ios-pause': !$ctrl.audio.paused }"></span>
+       {{$ctrl.title}}
+        </button>
+
+         <input type="range" class="form-control" ng-model="$ctrl.audio.playbackRate" min="0" max="2" step=".1">

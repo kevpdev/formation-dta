@@ -1,19 +1,37 @@
 {
-  "users": [
-    {
-      "name": "Paul",
-      "age": 57,
-      "id": 1
-    },
-    {
-      "name": "Thomas",
-      "age": 42,
-      "id": 2
-    },
-    {
-      "name": "Emilie",
-      "age": 25,
-      "id": 3
-    }
-  ]
+    "users": [{
+            "name": "Paul",
+            "age": 57,
+            "id": 1,
+            "email": "prepontkevin@gmail.com",
+            "rate":7
+        },
+        {
+            "name": "Thomas",
+            "age": 42,
+            "id": 2,
+            "email": "tmoyse@gmail.com",
+            "rate":3
+        },
+        {
+            "name": "Emilie",
+            "age": 25,
+            "id": 3,
+            "email": "prepontkevin@gmail.com",
+            "rate":2
+
+        }
+    ],
+    "sounds":[
+            {
+             "url": "http://192.168.99.41:1337/10415.mp3", 
+            "title": "SON 1"
+             },
+            {
+            "url": "http://192.168.99.41:1337/3634.mp3", 
+            "title": "SON 2" },
+            { 
+            "url": "http://192.168.99.41:1337/4072.mp3", 
+            "title": "SON 3" }
+        ]
 }

@@ -1,0 +1,6 @@
+<sound-form onAdd="$ctrl.saveSound($event)" sound="$ctrl.sound"></sound-form>
+ <sound-button 
+          ng-repeat="sound in $ctrl.sounds track by $index"
+          on-delete="$ctrl.delete(sound)" 
+          sound="sound">
+        </sound-button>

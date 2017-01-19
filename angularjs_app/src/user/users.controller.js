@@ -9,11 +9,11 @@ export class UsersController {
                 this.users = users;
             });
 
-        this.users = [{ name: "Thomas", age: "40" },
-            { name: "Nicolas", age: "25" },
-            { name: "Lilian", age: "37" },
-            { name: "Murielle", age: "31" }
-        ];
+        // this.users = [{ name: "Thomas", age: "40" },
+        //     { name: "Nicolas", age: "25" },
+        //     { name: "Lilian", age: "37" },
+        //     { name: "Murielle", age: "31" }
+        // ];
         this.undo = {};
 
 
@@ -37,6 +37,9 @@ export class UsersController {
 
 
 
+    }
+    enableCss() {
+        this.cssEnable = !this.cssEnable;
     }
 
     sort(predicat) {

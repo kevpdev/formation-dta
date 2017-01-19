@@ -1,0 +1,14 @@
+<form ng-class="{ invalid: soundForm.$invalid && soundForm.$dirty }" name="soundForm" ng-submit="$ctrl.saveSound(soundForm, $ctrl.sound)" class="well" novalidate>
+    <fieldset>
+        <legend>Ajouter un son</legend>
+        <div class="form-group">
+            <p><label for="nom">Titre</label>
+                <input type="text" id="title" name="title" class="form-control" required ng-model="$ctrl.sound.title" required ng-maxlength="10"></p>      
+        </div>
+        <div class="form-group">
+            <p><label for="url">Url</label>
+                <input type="text" id="url" name="url" class="form-control" required ng-model="$ctrl.sound.url"></p>
+        </div>
+          <input type="submit" value="Ajouter" class="btn btn-primary">
+    </fieldset>
+</form>

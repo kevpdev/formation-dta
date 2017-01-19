@@ -5,16 +5,23 @@ import { EldestFilter } from './eldest.filter';
 import { UsersController } from './users.controller';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
+import { DtaGravatar } from './dta-gravatar/dta-gravatar.component';
+import { DtaUser } from './dta-user/dta-user.component';
+
 
 export default angular.module('user', [
     ngRoute
 ])
 
+
 .controller('UsersController', UsersController)
-    .controller('UserController', UserController)
-    .filter('eldest', EldestFilter)
+.controller('UserController', UserController)
+.filter('eldest', EldestFilter)
 
 .service('UserService', UserService)
+
+.component('dtaGravatar', DtaGravatar)
+.component('dtaUser', DtaUser)
 
 .config(function($routeProvider) {
 
@@ -30,12 +37,12 @@ export default angular.module('user', [
                 controllerAs: 'ctrl'
             })
     })
-    .directive('dtaUser', function() {
-        return {
-            restrict: 'E',
-            template: `<strong>User</strong>`
-        }
-    })
+// .directive('dtaUser', function() {
+//         return {
+//             restrict: 'E',
+//             template: `<strong>User</strong>`
+//         }
+//     })
 
 .directive("major", function() {
     return {
@@ -47,8 +54,7 @@ export default angular.module('user', [
             };
         }
     }
+
 })
-
-
 
 .name;
