@@ -1,7 +1,7 @@
 # Application - Pizzeria dta
 
 * Auteur : Kevin PREPONT
-* Technologies : Java 8, Jdbc, JPA, Spring 4.3 , Angularjs 1.6, Bootstrap
+* Technologies : Java 8, Jdbc, JPA, Spring boot 1.4.3 , Angularjs 1.6, Bootstrap
 * Serveur d'application : Apache Tomcat, WildFly
 
 # But de l'application
